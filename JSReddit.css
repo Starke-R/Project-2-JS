@@ -1,0 +1,81 @@
+/* Responsive mindre storlek */
+@media only screen and (max-width: 500px) {
+
+body{
+    background-color: white;
+}
+
+.mainContainer{
+    background-color: white;
+    display: grid;
+    grid-template-rows: 2.5rem auto;
+    grid-template-areas:
+        "top top top"
+        "main main main";
+    grid-template-columns: 100%;
+}
+
+header{
+    grid-template-columns: 100%;
+    grid-template-rows: 1; 
+    background-color: white;
+    display: grid;
+    position: fixed;
+    width: 100%;
+    margin-top: none;
+    padding-top: none;
+}
+
+
+#logInButton{
+    background-color:#FF4500;
+    border: none;
+    height: 40px;
+    width: 60px;
+    color: white;
+    font-weight: bold;
+    border-radius: 35px;
+    position: absolute;
+    top: 1,5%;
+    margin-left: 240px;
+}
+
+main{
+    margin-top: 2.5rem;
+    grid-area: leftnav, main, rightnav;
+    max-width: 500px;
+}
+
+#banner{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+}
+
+
+/* Responsive större storlek */
+@media only screen and (min-width: 480px) {
+
+    body{
+        background-color: white;
+    }
+    
+    .mainContainer{
+        background-color: white;
+        display: grid;
+        grid-template-rows: 2;
+        grid-template-areas:
+            "top top top"
+            "leftnav main rightnav";
+        grid-template-columns: 1fr 450px;
+    
+    }
+    
+    header{
+        background-color: white;
+    }
+    
+    
+    }
