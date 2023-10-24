@@ -3,29 +3,39 @@
 
 body{
     background-color: white;
+    font-family: verdana, arial, helvetica, sans-serif;
+    max-width: 500px;
+    
 }
 
 .mainContainer{
     background-color: white;
     display: grid;
-    grid-template-rows: 2.5rem auto;
+    grid-template-rows: 2.5rem, auto;
     grid-template-areas:
         "top top top"
         "main main main";
     grid-template-columns: 100%;
+    
 }
 
 header{
     grid-template-columns: 100%;
     grid-template-rows: 1; 
-    background-color: white;
+    background-color: blue;
     display: grid;
     position: fixed;
     width: 100%;
+    height: 3rem;
     margin-top: none;
     padding-top: none;
+    align-items: center;
+    
 }
 
+#redditLogo{
+    margin-left: 50px;
+}
 
 #logInButton{
     background-color:#FF4500;
@@ -37,19 +47,79 @@ header{
     border-radius: 35px;
     position: absolute;
     top: 1,5%;
-    margin-left: 240px;
+    margin-left: 325px;
 }
 
 main{
+    display: grid;
     margin-top: 2.5rem;
     grid-area: leftnav, main, rightnav;
-    max-width: 500px;
+    margin-left: 0%;    
 }
 
-#banner{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+#subRedditInfo{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    
+}
+
+#subRedditIcon{
+    border-radius: 35px;
+}
+
+
+h1{
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+#joinButton{    
+    background-color:rgb(22, 22, 221);
+    border: none;
+    height: 30px;
+    width: 50px;
+    color: white;
+    border-radius: 35px;
+    position: absolute;
+    top: 1,5%;
+    margin-left: 350px;
+}
+
+#subRedditWelcome{
+    font-size: 0.8rem;
+}
+
+#feedButton{
+    background-color:rgb(172, 171, 171);
+    border: none;
+    height: 40px;
+    width: 60px;
+    color: black;
+    font-weight: bold;
+    border-radius: 35px;
+}
+
+#aboutButton{
+    background-color:white;
+    border: none;
+    height: 40px;
+    width: 60px;
+    color: black;
+    font-weight: bold;
+    border-radius: 35px;
+}
+
+#createButton{
+    margin-top: 20px;
+    background-color:white;
+    border: solid 1px;
+    height: 40px;
+    width: 120px;
+    color: black;
+    font-weight: bold;
+    border-radius: 35px;
 }
 
 }
