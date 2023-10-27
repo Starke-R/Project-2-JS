@@ -79,7 +79,7 @@ main{
 }
 
 
-h1{
+h4{
     font-size: 1rem;
     font-weight: bold;
     margin-left: 5px;
@@ -161,22 +161,8 @@ h5{
 }
 
 
-}
-
-
-#title{
-    margin-left: 10px;
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-#tags{
-    margin-left: 10px;
-    margin-top: 20px;
-    font-size: 12px;
-}
-
-#bod{
+/* CSS för JSON-importerade inlägg */
+.posted{
     margin-left: 10px;
     margin-top: 20px;
     font-size: 12px;
@@ -184,6 +170,28 @@ h5{
     border-bottom: 1px solid lightgrey;
 }
 
+h1{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+h2{
+    font-size: 12px;
+    background-color:rgb(0, 151, 20);
+    border: none;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    width: 200px;
+    border-radius: 35px;
+    text-indent: 1em; 
+}
+
+h3{
+    font-size: 12px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid lightgrey;
+    font-weight: normal;
+}
 
 
 
