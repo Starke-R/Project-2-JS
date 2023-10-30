@@ -42,21 +42,29 @@
                 From newbies to lore experts, from memers to artists. All are welcome to share their 
                 passion and opinions as long as it has to do with Lord of the Rings or its universe! 
                 </p>
-                <style>
-                    #welcomeText{
-                    
-                        padding-bottom: 10px;
-                        border-bottom: 1px solid lightgrey;
-                    }
-                </style>
 
-                <button id="feedButton">Feed</button>
-                <button id="aboutButton">About</button>
+                    <button id="feedButton">Feed</button>
+                    <button id="aboutButton">About</button>
+
                 <br>
+
                 <button type="button" class="createButton">Create post</button>
-                <div class="createPostField">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                  </div>
+                    <div class="createPostField">
+
+                        <form>
+
+                            <input type="text" id="inputTitle" name="inputTitle" placeholder="Title...">
+                            <br/>
+                            <input type="text" id="inputTagOne" name="inputTagOne" placeholder="Tag 1">
+                            <input type="text" id="inputTagTwo" name="inputTagTwo" placeholder="Tag 2">
+                            <input type="text" id="inputTagThree" name="inputTagThree" placeholder="Tag 3">
+                            <br/>
+                            <textarea id="inputPost" name="inputPost" placeholder="Write something here..."></textarea>
+                            <button id="postButton">Post</button>
+                                
+                        </form>
+
+                    </div>
 
             </div>
 

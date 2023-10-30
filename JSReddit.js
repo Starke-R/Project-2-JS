@@ -1,3 +1,4 @@
+
 fetch('https://dummyjson.com/posts/')
 .then(res => res.json())
 .then((posts) => { 
@@ -49,3 +50,34 @@ for (let i = 0; i < collapse.length; i++) {
     }
   });
 }
+
+
+
+// Function for getting input from the "create post"-fields and posting on the page after clicking on "post"-button
+function onClick() {
+  event.preventDefault();
+  let divs = document.createElement("div");
+  let postNewTitle = document.getElementById("inputTitle").value;
+  let postNewTagOne = document.getElementById("inputTagOne").value;
+  let postNewTagTwo = document.getElementById("inputTagTwo").value;
+  let postNewTagThree = document.getElementById("inputTagThree").value;
+  let postNewPost = document.getElementById("inputPost").value;
+
+  divs.innerHTML += "<h1>" + postNewTitle + "</h1>";
+  divs.innerHTML += "<h2>" + postNewTagOne + "</h2>";
+  divs.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
+  divs.innerHTML += "<h2>" + postNewTagThree + "</h2>";
+  divs.innerHTML += "<h3>" + postNewPost + "</h3>";
+
+  document.body.append(divs);
+  divs.classList.add("posted");
+ 
+  //Clearing fields after getting the values
+  document.getElementById("inputTitle").value = "";
+  document.getElementById("inputTagOne").value = "";
+  document.getElementById("inputTagTwo").value = "";
+  document.getElementById("inputTagThree").value = "";
+  document.getElementById("inputPost").value = "";
+}
+postButton.addEventListener("click", onClick);
+
