@@ -29,7 +29,7 @@ fetch('https://dummyjson.com/posts/')
       let postBody = post.posts[i].body;
       divPost.innerHTML += "<h3>" + postBody + "</h3>";
 
-      document.body.append(divPost);
+      document.getElementById("oldPostsDiv").appendChild(divPost);
       divPost.classList.add("oldPosts");     
     }
   } 
@@ -37,7 +37,7 @@ fetch('https://dummyjson.com/posts/')
 
 
 
-//Open collapsing section to create posts
+// Open collapsing section to create posts
 let collapse = document.getElementsByClassName("createButton");
 
 for (let i = 0; i < collapse.length; i++) {
@@ -70,10 +70,22 @@ function onClick() {
   divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
   divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
 
-  document.body.append(divPost);
+  // Adding class for styling in CSS
   divPost.classList.add("newPosts");
+
+
+  let tagStyle = document.getElementsByClassName("h2");
+    for (let i = 0; i < tagStyle.length; i++) {
+      tagStyle[i].classList.add("tagStyling");
+    }
+
+  document.getElementById("newPostsDiv").appendChild(divPost);
+
+  // Inserting new posts above the old ones
+  let previousPosts = document.getElementById("newPostsDiv");
+  previousPosts.insertBefore(divPost, previousPosts.firstChild);
  
-  //Clearing fields after getting the values
+  // Clearing fields after getting the values
   document.getElementById("inputTitle").value = "";
   document.getElementById("inputTagOne").value = "";
   document.getElementById("inputTagTwo").value = "";
