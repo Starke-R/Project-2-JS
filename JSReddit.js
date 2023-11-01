@@ -73,12 +73,6 @@ function onClick() {
   // Adding class for styling in CSS
   divPost.classList.add("newPosts");
 
-
-  let tagStyle = document.getElementsByClassName("h2");
-    for (let i = 0; i < tagStyle.length; i++) {
-      tagStyle[i].classList.add("tagStyling");
-    }
-
   document.getElementById("newPostsDiv").appendChild(divPost);
 
   // Inserting new posts above the old ones
