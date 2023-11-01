@@ -1,9 +1,9 @@
 
 fetch('https://dummyjson.com/posts/')
-.then(res => res.json())
-.then((posts) => { 
-  
-  let post = posts;
+  .then(res => res.json())
+  .then((posts) => {
+
+    let post = posts;
 
     for (let i = 0; i < post.posts.length; i++) {
       let divPost = document.createElement("div");
@@ -11,7 +11,7 @@ fetch('https://dummyjson.com/posts/')
       //Hämtar och printar titeln
       let postTitle = post.posts[i].title;
       divPost.innerHTML = "<h1>" + postTitle + "</h1>";
-      
+
       //Hämtar och printar första tagen
       let postTag = post.posts[i].tags;
       let tagOne = postTag.slice(0, 1);
@@ -29,11 +29,28 @@ fetch('https://dummyjson.com/posts/')
       let postBody = post.posts[i].body;
       divPost.innerHTML += "<h3>" + postBody + "</h3>";
 
+      //Hämtar och printar reactions
+      let postLikes = post.posts[i].reactions;
+      divPost.innerHTML += "<button>hey</button>" + "<h6>" + postLikes + "</h6>" + "<button>↓</button>";
+
       document.getElementById("oldPostsDiv").appendChild(divPost);
-      divPost.classList.add("oldPosts");     
+      divPost.classList.add("oldPosts");
+
     }
-  } 
-);
+  }
+  );
+
+
+let btns = document.getElementsByTagName("button")
+for (let i = 0; i < btns.length; i++) {
+
+  console.log("1")
+  if (btns[i].innerText = "hey") {
+    console.log("2")
+    btns[i].classList.add("likeButton");
+  }
+
+}
 
 
 
@@ -41,7 +58,7 @@ fetch('https://dummyjson.com/posts/')
 let collapse = document.getElementsByClassName("createButton");
 
 for (let i = 0; i < collapse.length; i++) {
-  collapse[i].addEventListener("click", function() {
+  collapse[i].addEventListener("click", function () {
     this.classList.toggle("active");
     let createPostField = this.nextElementSibling;
     if (createPostField.style.display === "block") {
@@ -78,7 +95,7 @@ function onClick() {
   // Inserting new posts above the old ones
   let previousPosts = document.getElementById("newPostsDiv");
   previousPosts.insertBefore(divPost, previousPosts.firstChild);
- 
+
   // Clearing fields after getting the values
   document.getElementById("inputTitle").value = "";
   document.getElementById("inputTagOne").value = "";

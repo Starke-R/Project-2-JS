@@ -37,6 +37,13 @@ header{
     margin-top: -35px;
 }
 
+#redditTextLogo{
+    visibility: hidden;
+    margin-left: 75px;
+    margin-top: -45px;
+}
+
+
 #menu {
     margin-left: 10px;
     margin-top: 10px;
@@ -337,6 +344,12 @@ h3{
         margin-left: 30px;
         margin-top: 5px;
     }
+
+    #redditTextLogo{
+        visibility: visible;
+        margin-left: 75px;
+        margin-top: -45px;
+    }
     
     #menu {
         display: none;
@@ -377,7 +390,7 @@ h3{
         margin-top: 5rem;
         width: 300px;
         height: 500px;
-        background-color: rgb(231, 223, 223);      
+        background-color:  #f1f1f1;     
         border-radius: 35px;  
         margin-left: 5px;
         margin-right: 5px;  
@@ -422,7 +435,7 @@ h3{
         margin-top: -10px;
         font-size: 0.6rem;
         font-weight: lighter;
-        margin-left: 65px;
+        margin-left: 5px;
     }
     
     
@@ -439,6 +452,7 @@ h3{
         font-size: 0.7rem;
         margin-left: 10px;
         margin-right: 10px;
+        
     }
 
     #joinButtonTwo{    
@@ -615,4 +629,35 @@ h3{
         font-weight: normal;
         float: left;
     }
+
+    h6{
+        font-size: 12px;
+        background-color:#f1f1f1;
+        border: none;
+        color: black;
+        font-weight: normal;
+        width: 100px;
+        height: 25px;
+        border-radius: 35px;
+        float: left;
+        text-align: center;
+        margin-bottom: 0%;
+        margin-top: 0%;
+    }
+
+    .likeButton{
+        background-color:rgb(255, 0, 0);
+        border: none;
+        height: 40px;
+        width: 60px;
+        color: black;
+        font-weight: bold;
+        border-radius: 35px;
+        cursor: pointer;
+        }
+
+    .dislikeButton{
+        visibility: hidden;
+        
+}
 }
