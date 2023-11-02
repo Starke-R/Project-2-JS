@@ -31,7 +31,18 @@ fetch('https://dummyjson.com/posts/')
 
       //Hämtar och printar reactions
       let postLikes = post.posts[i].reactions;
-      divPost.innerHTML += "<button>hey</button>" + "<h6>" + postLikes + "</h6>" + "<button>↓</button>";
+      divPost.innerHTML += "<h6>" + postLikes + "</h6>" + "<button>⯅</button>" + "<button>⯆</button>";
+
+      // Adding classes to the like button and dislike button
+      let btns = document.getElementsByTagName("button");
+      for (let i = 0; i < btns.length; i++) {
+        if (btns[i].textContent === "⯅") {
+          btns[i].classList.add("likeButton");
+        }
+        if (btns[i].textContent === "⯆") {
+          btns[i].classList.add("dislikeButton");
+        }
+      }
 
       document.getElementById("oldPostsDiv").appendChild(divPost);
       divPost.classList.add("oldPosts");
@@ -39,20 +50,6 @@ fetch('https://dummyjson.com/posts/')
     }
   }
   );
-
-
-let btns = document.getElementsByTagName("button")
-for (let i = 0; i < btns.length; i++) {
-
-  console.log("1")
-  if (btns[i].innerText = "hey") {
-    console.log("2")
-    btns[i].classList.add("likeButton");
-  }
-
-}
-
-
 
 // Open collapsing section to create posts
 let collapse = document.getElementsByClassName("createButton");
@@ -69,8 +66,6 @@ for (let i = 0; i < collapse.length; i++) {
   });
 }
 
-
-
 // Function for getting input from the "create post"-fields and posting on the page after clicking on "post"-button
 function onClick() {
   event.preventDefault();
@@ -86,6 +81,7 @@ function onClick() {
   divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
   divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
   divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
+  divPost.innerHTML += "<h6>" + "</h6>" + "<button>⯅</button>" + "<button>⯆</button>";
 
   // Adding class for styling in CSS
   divPost.classList.add("newPosts");
@@ -103,6 +99,17 @@ function onClick() {
   document.getElementById("inputTagThree").value = "";
   document.getElementById("inputPost").value = "";
 
+  // Adding classes to the like button and dislike button
+  let btns = document.getElementsByTagName("button")
+  for (let i = 0; i < btns.length; i++) {
+    if (btns[i].textContent === "⯅") {
+      btns[i].classList.add("likeButton");
+    }
+    if (btns[i].textContent === "⯆") {
+      btns[i].classList.add("dislikeButton");
+    }
+  }
 }
 postButton.addEventListener("click", onClick);
+
 
