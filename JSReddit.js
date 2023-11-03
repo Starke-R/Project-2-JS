@@ -43,7 +43,6 @@ fetch('https://dummyjson.com/posts/')
           btns[i].classList.add("dislikeButton");
         }
       }
-
       document.getElementById("oldPostsDiv").appendChild(divPost);
       divPost.classList.add("oldPosts");
 
@@ -76,17 +75,26 @@ function onClick() {
   let postNewTagThree = document.getElementById("inputTagThree").value;
   let postNewPost = document.getElementById("inputPost").value;
 
-  divPost.innerHTML += "<h1>" + postNewTitle + "</h1>";
-  divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
-  divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
-  divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
-  divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
-  divPost.innerHTML += "<h6>" + "</h6>" + "<button>⯅</button>" + "<button>⯆</button>";
 
-  // Adding class for styling in CSS
-  divPost.classList.add("newPosts");
+  // If title and post input fields are empty, nothing is posted.
+  if (inputTitle.value == "" || inputPost.value == "") {
+    alert("Title and post cannot be empty");
+  }
+  else {
+    divPost.innerHTML += "<h1>" + postNewTitle + "</h1>";
+    divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
+    divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
+    divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
+    divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
+    divPost.innerHTML += "<h6>" + "0" + "</h6>" + "<button>⯅</button>" + "<button>⯆</button>";
 
-  document.getElementById("newPostsDiv").appendChild(divPost);
+    // Adding class for styling in CSS
+    divPost.classList.add("newPosts");
+
+    document.getElementById("newPostsDiv").appendChild(divPost);
+  }
+
+
 
   // Inserting new posts above the old ones
   let previousPosts = document.getElementById("newPostsDiv");
@@ -111,5 +119,4 @@ function onClick() {
   }
 }
 postButton.addEventListener("click", onClick);
-
 
