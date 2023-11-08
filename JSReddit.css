@@ -386,6 +386,24 @@ h3{
 
     }
 
+    #navLeft{
+        display: grid;
+        grid-area: leftnav;
+        margin-top: 5rem;
+        width: 300px;
+        height: 500px;
+            
+        border-radius: 35px;  
+        margin-left: 50px;
+          
+    }
+    
+    .leftBlock{
+        padding-top: 20px;
+        border-bottom: 1px solid lightgrey;
+
+    }
+
     #navRight{
         display: grid;
         grid-area: rightnav;

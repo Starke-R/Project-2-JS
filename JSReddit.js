@@ -31,15 +31,15 @@ fetch('https://dummyjson.com/posts/')
 
       //Hämtar och printar reactions
       let postLikes = post.posts[i].reactions;
-      divPost.innerHTML += "<h6>" + postLikes + "</h6>" + "<button>⯅</button>" + "<button>⯆</button>";
+      divPost.innerHTML += "<h6>" + postLikes + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
 
       // Adding classes to the like button and dislike button
       let btns = document.getElementsByTagName("button");
       for (let i = 0; i < btns.length; i++) {
-        if (btns[i].textContent === "⯅") {
+        if (btns[i].textContent === "↑") {
           btns[i].classList.add("likeButton");
         }
-        if (btns[i].textContent === "⯆") {
+        if (btns[i].textContent === "↓") {
           btns[i].classList.add("dislikeButton");
         }
       }
@@ -86,7 +86,7 @@ function onClick() {
     divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
     divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
     divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
-    divPost.innerHTML += "<h6>" + "0" + "</h6>" + "<button>⯅</button>" + "<button>⯆</button>";
+    divPost.innerHTML += "<h6>" + "0" + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
 
     // Adding class for styling in CSS
     divPost.classList.add("newPosts");
@@ -110,13 +110,81 @@ function onClick() {
   // Adding classes to the like button and dislike button
   let btns = document.getElementsByTagName("button")
   for (let i = 0; i < btns.length; i++) {
-    if (btns[i].textContent === "⯅") {
+    if (btns[i].textContent === "↑") {
       btns[i].classList.add("likeButton");
     }
-    if (btns[i].textContent === "⯆") {
+    if (btns[i].textContent === "↓") {
       btns[i].classList.add("dislikeButton");
     }
   }
+
+  // Saving values of new posts in local storage
+  let storeTitle = JSON.stringify(postNewTitle);
+  let storeTagOne = JSON.stringify(postNewTagOne);
+  let storeTagTwo = JSON.stringify(postNewTagTwo);
+  let storeTagThree = JSON.stringify(postNewTagThree);
+  let storeBody = JSON.stringify(postNewPost);
+
+  localStorage.setItem("storeTitle", storeTitle);
+  localStorage.setItem("storeTagOne", storeTagOne);
+  localStorage.setItem("storeTagTwo", storeTagTwo);
+  localStorage.setItem("storeTagThree", storeTagThree);
+  localStorage.setItem("storeBody", storeBody);
+
+
 }
 postButton.addEventListener("click", onClick);
 
+
+
+// When page is reloaded, new posts that are saved in local storage are reprinted
+window.onload = function () {
+
+  // Check if there is a Title value saved in local storage, if there is, reprint all values saved 
+  let checkStorage = localStorage.getItem("storeTitle");
+
+  if (checkStorage != null) {
+
+
+    let divPost = document.createElement("div");
+
+    let jsonTitle = localStorage.getItem("storeTitle");
+    let postNewTitle = JSON.parse(jsonTitle);
+
+    let jsonTagOne = localStorage.getItem("storeTagOne");
+    let postNewTagOne = JSON.parse(jsonTagOne);
+
+    let jsonTagTwo = localStorage.getItem("storeTagTwo");
+    let postNewTagTwo = JSON.parse(jsonTagTwo);
+
+    let jsonTagThree = localStorage.getItem("storeTagThree");
+    let postNewTagThree = JSON.parse(jsonTagThree);
+
+    let jsonBody = localStorage.getItem("storeBody");
+    let postNewPost = JSON.parse(jsonBody);
+
+    divPost.innerHTML += "<h1>" + postNewTitle + "</h1>";
+    divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
+    divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
+    divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
+    divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
+    divPost.innerHTML += "<h6>" + "0" + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
+
+     // Adding class for styling in CSS
+     divPost.classList.add("newPosts");
+
+    // Adding classes to the like button and dislike button
+    let btns = document.getElementsByTagName("button")
+    for (let i = 0; i < btns.length; i++) {
+      if (btns[i].textContent === "↑") {
+        btns[i].classList.add("likeButton");
+      }
+      if (btns[i].textContent === "↓") {
+        btns[i].classList.add("dislikeButton");
+      }
+    }
+  
+
+  document.getElementById("newPostsDiv").appendChild(divPost);
+  }
+}
