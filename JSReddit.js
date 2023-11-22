@@ -1,4 +1,5 @@
 
+// Fetching posts from API
 fetch('https://dummyjson.com/posts/')
   .then(res => res.json())
   .then((posts) => {
@@ -8,28 +9,28 @@ fetch('https://dummyjson.com/posts/')
     for (let i = 0; i < post.posts.length; i++) {
       let divPost = document.createElement("div");
 
-      //Hämtar och printar titeln
+      // Printing title
       let postTitle = post.posts[i].title;
       divPost.innerHTML = "<h1>" + postTitle + "</h1>";
 
-      //Hämtar och printar första tagen
+      // Printing first tag
       let postTag = post.posts[i].tags;
       let tagOne = postTag.slice(0, 1);
       divPost.innerHTML += "<h2>" + tagOne + "</h2>";
 
-      //Hämtar och printar andra tagen
+      // Second tag
       let tagTwo = postTag.slice(1, 2);
       divPost.innerHTML += "<h2>" + tagTwo + "</h2>";
 
-      //Hämtar och printar ev. tredje tagen
+      // Third tag
       let tagThree = postTag.slice(2, 3);
       divPost.innerHTML += "<h2>" + tagThree + "</h2>";
 
-      //Hämtar och printar inlägget
+      // Printing main post
       let postBody = post.posts[i].body;
       divPost.innerHTML += "<h3>" + postBody + "</h3>";
 
-      //Hämtar och printar reactions
+      // Printing number of likes
       let postLikes = post.posts[i].reactions;
       divPost.innerHTML += "<h6>" + postLikes + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
 
@@ -38,11 +39,13 @@ fetch('https://dummyjson.com/posts/')
       for (let i = 0; i < btns.length; i++) {
         if (btns[i].textContent === "↑") {
           btns[i].classList.add("likeButton");
-        }
-        if (btns[i].textContent === "↓") {
-          btns[i].classList.add("dislikeButton");
+
         }
       }
+      if (btns[i].textContent === "↓") {
+        btns[i].classList.add("dislikeButton");
+      }
+
       document.getElementById("oldPostsDiv").appendChild(divPost);
       divPost.classList.add("oldPosts");
 
@@ -64,6 +67,8 @@ for (let i = 0; i < collapse.length; i++) {
     }
   });
 }
+
+
 
 // Function for getting input from the "create post"-fields and posting on the page after clicking on "post"-button
 function onClick() {
@@ -94,8 +99,6 @@ function onClick() {
     document.getElementById("newPostsDiv").appendChild(divPost);
   }
 
-
-
   // Inserting new posts above the old ones
   let previousPosts = document.getElementById("newPostsDiv");
   previousPosts.insertBefore(divPost, previousPosts.firstChild);
@@ -118,50 +121,83 @@ function onClick() {
     }
   }
 
-  // Saving values of new posts in local storage
-  let storeTitle = JSON.stringify(postNewTitle);
-  let storeTagOne = JSON.stringify(postNewTagOne);
-  let storeTagTwo = JSON.stringify(postNewTagTwo);
-  let storeTagThree = JSON.stringify(postNewTagThree);
-  let storeBody = JSON.stringify(postNewPost);
 
-  localStorage.setItem("storeTitle", storeTitle);
-  localStorage.setItem("storeTagOne", storeTagOne);
-  localStorage.setItem("storeTagTwo", storeTagTwo);
-  localStorage.setItem("storeTagThree", storeTagThree);
-  localStorage.setItem("storeBody", storeBody);
+  // Adding posts to local storage
+  let checkStorage = localStorage.getItem("storingValues");
 
+  if (checkStorage != null) {
+
+  let storeValues = [postNewTitle, postNewTagOne, postNewTagTwo, postNewTagThree, postNewPost]
+
+  let storingPosts = JSON.parse(localStorage.getItem("storingValues"));
+  storingPosts.push(storeValues);
+  localStorage.setItem("storingValues", JSON.stringify(storingPosts));
+  }
+
+  else {
+
+    let storeValues = [postNewTitle, postNewTagOne, postNewTagTwo, postNewTagThree, postNewPost]
+    let storingPosts = [storeValues];
+    localStorage.setItem("storingValues", JSON.stringify(storingPosts));
+  }
+  /*
+    // Saving values of new posts in local storage
+    let storeTitle = JSON.stringify(postNewTitle);
+    let storeTagOne = JSON.stringify(postNewTagOne);
+    let storeTagTwo = JSON.stringify(postNewTagTwo);
+    let storeTagThree = JSON.stringify(postNewTagThree);
+    let storeBody = JSON.stringify(postNewPost);
+  
+    storingValues.push(storeTitle, storeTagOne, storeTagTwo, storeTagThree, storeBody);
+    localStorage.setItem("values", storingValues);*/
+
+  /*
+    localStorage.setItem("storeTitle", storeTitle);
+    localStorage.setItem("storeTagOne", storeTagOne);
+    localStorage.setItem("storeTagTwo", storeTagTwo);
+    localStorage.setItem("storeTagThree", storeTagThree);
+    localStorage.setItem("storeBody", storeBody);
+  */
 
 }
 postButton.addEventListener("click", onClick);
-
-
 
 // When page is reloaded, new posts that are saved in local storage are reprinted
 window.onload = function () {
 
   // Check if there is a Title value saved in local storage, if there is, reprint all values saved 
-  let checkStorage = localStorage.getItem("storeTitle");
+  let checkStorage = localStorage.getItem("storingValues");
+
 
   if (checkStorage != null) {
 
+    let retrievedValues = JSON.parse(localStorage.getItem("storingValues"));
+
+    for (let i = 0; i < retrievedValues.length; i++) {
+
+    let values = retrievedValues[i];
 
     let divPost = document.createElement("div");
 
-    let jsonTitle = localStorage.getItem("storeTitle");
-    let postNewTitle = JSON.parse(jsonTitle);
+    let postNewTitle = values[0];
+    let postNewTagOne = values[1];
+    let postNewTagTwo = values[2];
+    let postNewTagThree = values[3];
+    let postNewPost = values[4];
 
-    let jsonTagOne = localStorage.getItem("storeTagOne");
-    let postNewTagOne = JSON.parse(jsonTagOne);
-
-    let jsonTagTwo = localStorage.getItem("storeTagTwo");
-    let postNewTagTwo = JSON.parse(jsonTagTwo);
-
-    let jsonTagThree = localStorage.getItem("storeTagThree");
-    let postNewTagThree = JSON.parse(jsonTagThree);
-
-    let jsonBody = localStorage.getItem("storeBody");
-    let postNewPost = JSON.parse(jsonBody);
+    /*
+        let jsonTagOne = localStorage.getItem("storeTagOne");
+        let postNewTagOne = JSON.parse(jsonTagOne);
+    
+        let jsonTagTwo = localStorage.getItem("storeTagTwo");
+        let postNewTagTwo = JSON.parse(jsonTagTwo);
+    
+        let jsonTagThree = localStorage.getItem("storeTagThree");
+        let postNewTagThree = JSON.parse(jsonTagThree);
+    
+        let jsonBody = localStorage.getItem("storeBody");
+        let postNewPost = JSON.parse(jsonBody);
+        */
 
     divPost.innerHTML += "<h1>" + postNewTitle + "</h1>";
     divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
@@ -170,8 +206,8 @@ window.onload = function () {
     divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
     divPost.innerHTML += "<h6>" + "0" + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
 
-     // Adding class for styling in CSS
-     divPost.classList.add("newPosts");
+    // Adding class for styling in CSS
+    divPost.classList.add("newPosts");
 
     // Adding classes to the like button and dislike button
     let btns = document.getElementsByTagName("button")
@@ -183,8 +219,9 @@ window.onload = function () {
         btns[i].classList.add("dislikeButton");
       }
     }
-  
 
-  document.getElementById("newPostsDiv").appendChild(divPost);
+
+    document.getElementById("newPostsDiv").appendChild(divPost);
   }
+}
 }
