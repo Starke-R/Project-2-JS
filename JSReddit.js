@@ -130,7 +130,7 @@ function onClick() {
   let storeValues = [postNewTitle, postNewTagOne, postNewTagTwo, postNewTagThree, postNewPost]
 
   let storingPosts = JSON.parse(localStorage.getItem("storingValues"));
-  storingPosts.push(storeValues);
+  storingPosts.unshift(storeValues);
   localStorage.setItem("storingValues", JSON.stringify(storingPosts));
   }
 
@@ -184,20 +184,6 @@ window.onload = function () {
     let postNewTagTwo = values[2];
     let postNewTagThree = values[3];
     let postNewPost = values[4];
-
-    /*
-        let jsonTagOne = localStorage.getItem("storeTagOne");
-        let postNewTagOne = JSON.parse(jsonTagOne);
-    
-        let jsonTagTwo = localStorage.getItem("storeTagTwo");
-        let postNewTagTwo = JSON.parse(jsonTagTwo);
-    
-        let jsonTagThree = localStorage.getItem("storeTagThree");
-        let postNewTagThree = JSON.parse(jsonTagThree);
-    
-        let jsonBody = localStorage.getItem("storeBody");
-        let postNewPost = JSON.parse(jsonBody);
-        */
 
     divPost.innerHTML += "<h1>" + postNewTitle + "</h1>";
     divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
