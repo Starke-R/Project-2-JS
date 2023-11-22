@@ -25,6 +25,8 @@ fetch('https://dummyjson.com/posts/')
       // Third tag
       let tagThree = postTag.slice(2, 3);
       divPost.innerHTML += "<h2>" + tagThree + "</h2>";
+      divPost.innerHTML += "<br>"
+      divPost.innerHTML += "<br>"
 
       // Printing main post
       let postBody = post.posts[i].body;
@@ -34,16 +36,16 @@ fetch('https://dummyjson.com/posts/')
       let postLikes = post.posts[i].reactions;
       divPost.innerHTML += "<h6>" + postLikes + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
 
+
       // Adding classes to the like button and dislike button
       let btns = document.getElementsByTagName("button");
       for (let i = 0; i < btns.length; i++) {
         if (btns[i].textContent === "↑") {
           btns[i].classList.add("likeButton");
-
         }
       }
       if (btns[i].textContent === "↓") {
-        btns[i].classList.add("dislikeButton");
+        btns[i].classList.add("dislikeButton");        
       }
 
       document.getElementById("oldPostsDiv").appendChild(divPost);
@@ -90,8 +92,17 @@ function onClick() {
     divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
     divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
     divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
+    divPost.innerHTML += "<br>"
+    divPost.innerHTML += "<br>"
     divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
+    divPost.innerHTML += "<br>"
     divPost.innerHTML += "<h6>" + "0" + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
+
+
+    let newTags = document.getElementsByTagName("h2");
+    for (let i = 0; i < newTags.length; i++) {
+    newTags[i].classList.add("tags");
+  }
 
     // Adding class for styling in CSS
     divPost.classList.add("newPosts");
