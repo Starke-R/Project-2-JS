@@ -94,87 +94,6 @@ if (checkStorage == null) {
     );
 
 
-  // Function for getting input from the "create post"-fields and posting on the page after clicking on "post"-button
-  function onClick() {
-    event.preventDefault();
-    let divPost = document.createElement("div");
-    let postNewTitle = document.getElementById("inputTitle").value;
-    let postNewTagOne = document.getElementById("inputTagOne").value;
-    let postNewTagTwo = document.getElementById("inputTagTwo").value;
-    let postNewTagThree = document.getElementById("inputTagThree").value;
-    let postNewPost = document.getElementById("inputPost").value;
-
-
-    // If title and post input fields are empty, nothing is posted.
-    if (inputTitle.value == "" || inputPost.value == "") {
-      alert("Title and post cannot be empty");
-    }
-    else {
-      divPost.innerHTML += "<h1>" + postNewTitle + "</h1>";
-      divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
-      divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
-      divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
-      divPost.innerHTML += "<br>"
-      divPost.innerHTML += "<br>"
-      divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
-      divPost.innerHTML += "<h6>" + "0" + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
-
-
-      let newTags = document.getElementsByTagName("h2");
-      for (let i = 0; i < newTags.length; i++) {
-        newTags[i].classList.add("tags");
-      }
-
-      // Adding class for styling in CSS
-      divPost.classList.add("newPosts");
-
-      document.getElementById("newPostsDiv").appendChild(divPost);
-    }
-
-    // Inserting new posts above the old ones
-    let previousPosts = document.getElementById("newPostsDiv");
-    previousPosts.insertBefore(divPost, previousPosts.firstChild);
-
-    // Clearing fields after getting the values
-    document.getElementById("inputTitle").value = "";
-    document.getElementById("inputTagOne").value = "";
-    document.getElementById("inputTagTwo").value = "";
-    document.getElementById("inputTagThree").value = "";
-    document.getElementById("inputPost").value = "";
-
-    // Adding classes to the like button and dislike button
-    let btns = document.getElementsByTagName("button")
-    for (let i = 0; i < btns.length; i++) {
-      if (btns[i].textContent === "↑") {
-        btns[i].classList.add("likeButton");
-      }
-      if (btns[i].textContent === "↓") {
-        btns[i].classList.add("dislikeButton");
-      }
-    }
-
-
-    // Adding new posts to local storage
-    let checkStorage = localStorage.getItem("storingValues");
-
-    if (checkStorage != null) {
-
-      let storeValues = [postNewTitle, postNewTagOne, postNewTagTwo, postNewTagThree, postNewPost]
-
-      let storingPosts = JSON.parse(localStorage.getItem("storingValues"));
-      storingPosts.unshift(storeValues);
-      localStorage.setItem("storingValues", JSON.stringify(storingPosts));
-    }
-
-    else {
-
-      let storeNewValues = [postNewTitle, postNewTagOne, postNewTagTwo, postNewTagThree, postNewPost]
-      let storingPosts = [storeNewValues];
-      localStorage.setItem("storingValues", JSON.stringify(storingPosts));
-    }
-
-  }
-  postButton.addEventListener("click", onClick);
 
 }
 
@@ -217,6 +136,7 @@ else {
         divPost.innerHTML += "<br>"
         divPost.innerHTML += "<br>"
         divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
+    
         divPost.innerHTML += "<h6>" + postNewLikes + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
 
         // Adding class for styling in CSS
@@ -256,3 +176,88 @@ for (let i = 0; i < collapse.length; i++) {
     }
   });
 }
+
+
+
+  // Function for getting input from the "create post"-fields and posting on the page after clicking on "post"-button
+  function onClick() {
+    event.preventDefault();
+    let divPost = document.createElement("div");
+    let postNewTitle = document.getElementById("inputTitle").value;
+    let postNewTagOne = document.getElementById("inputTagOne").value;
+    let postNewTagTwo = document.getElementById("inputTagTwo").value;
+    let postNewTagThree = document.getElementById("inputTagThree").value;
+    let postNewPost = document.getElementById("inputPost").value;
+    let postNewLikes =  0;
+
+    // If title and post input fields are empty, nothing is posted.
+    if (inputTitle.value == "" || inputPost.value == "") {
+      alert("Title and post cannot be empty");
+    }
+    else {
+      divPost.innerHTML += "<h1>" + postNewTitle + "</h1>";
+      divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
+      divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
+      divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
+      divPost.innerHTML += "<br>"
+      divPost.innerHTML += "<br>"
+      divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
+      divPost.innerHTML += "<h6>" + postNewLikes + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
+
+
+      let newTags = document.getElementsByTagName("h2");
+      for (let i = 0; i < newTags.length; i++) {
+        newTags[i].classList.add("tags");
+      }
+
+      // Adding class for styling in CSS
+      divPost.classList.add("newPosts");
+
+      document.getElementById("newPostsDiv").appendChild(divPost);
+    }
+
+    // Inserting new posts above the old ones
+    let previousPosts = document.getElementById("newPostsDiv");
+    previousPosts.insertBefore(divPost, previousPosts.firstChild);
+
+    // Clearing fields after getting the values
+    document.getElementById("inputTitle").value = "";
+    document.getElementById("inputTagOne").value = "";
+    document.getElementById("inputTagTwo").value = "";
+    document.getElementById("inputTagThree").value = "";
+    document.getElementById("inputPost").value = "";
+    
+
+    // Adding classes to the like button and dislike button
+    let btns = document.getElementsByTagName("button")
+    for (let i = 0; i < btns.length; i++) {
+      if (btns[i].textContent === "↑") {
+        btns[i].classList.add("likeButton");
+      }
+      if (btns[i].textContent === "↓") {
+        btns[i].classList.add("dislikeButton");
+      }
+    }
+
+
+    // Adding new posts to local storage
+    let checkStorage = localStorage.getItem("storingValues");
+
+    if (checkStorage != null) {
+
+      let storeValues = [postNewTitle, postNewTagOne, postNewTagTwo, postNewTagThree, postNewPost, postNewLikes]
+
+      let storingPosts = JSON.parse(localStorage.getItem("storingValues"));
+      storingPosts.unshift(storeValues);
+      localStorage.setItem("storingValues", JSON.stringify(storingPosts));
+    }
+
+    else {
+
+      let storeNewValues = [postNewTitle, postNewTagOne, postNewTagTwo, postNewTagThree, postNewPost, postNewLikes]
+      let storingPosts = [storeNewValues];
+      localStorage.setItem("storingValues", JSON.stringify(storingPosts));
+    }
+
+  }
+  postButton.addEventListener("click", onClick);
