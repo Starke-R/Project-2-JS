@@ -53,6 +53,19 @@ if (checkStorage == null) {
           }
         }
 
+
+
+        let up = document.getElementsByClassName("likeButton")
+        for (let i = 0; i < up.length; i++) {
+          up[i].addEventListener("click", function () {
+            console.log("hej")
+          })
+
+        }
+
+
+
+
         document.getElementById("oldPostsDiv").appendChild(divPost);
         divPost.classList.add("oldPosts");
 
@@ -79,32 +92,6 @@ if (checkStorage == null) {
       }
     }
     );
-
-  // Open collapsing section to create posts
-  let collapse = document.getElementsByClassName("createButton");
-
-  for (let i = 0; i < collapse.length; i++) {
-    collapse[i].addEventListener("click", function () {
-      this.classList.toggle("active");
-      let createPostField = this.nextElementSibling;
-      if (createPostField.style.display === "block") {
-        createPostField.style.display = "none";
-      } else {
-        createPostField.style.display = "block";
-      }
-    });
-  }
-
-  // Plussing likes
-  function moreLikes() {
-
-    let div = document.getElementById("divPost");
-    for (let i = 0; i < div.length; i++) {
-      console.log(div.postTitle);
-
-    }
-  }
-
 
 
   // Function for getting input from the "create post"-fields and posting on the page after clicking on "post"-button
@@ -251,4 +238,21 @@ else {
       }
     }
   }
+}
+
+
+
+// Open collapsing section to create posts
+let collapse = document.getElementsByClassName("createButton");
+
+for (let i = 0; i < collapse.length; i++) {
+  collapse[i].addEventListener("click", function () {
+    this.classList.toggle("active");
+    let createPostField = this.nextElementSibling;
+    if (createPostField.style.display === "block") {
+      createPostField.style.display = "none";
+    } else {
+      createPostField.style.display = "block";
+    }
+  });
 }
