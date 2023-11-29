@@ -42,28 +42,24 @@ if (checkStorage == null) {
         divPost.innerHTML += "<h6>" + postLikes + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
 
 
+
         // Adding classes to the like button and dislike button
         let btns = document.getElementsByTagName("button")
+
         for (let i = 0; i < btns.length; i++) {
+          
           if (btns[i].textContent === "↑") {
             btns[i].classList.add("likeButton");
-          }
+            btns[i].addEventListener("click", function(){
+              
+          })
+          
+        }
           if (btns[i].textContent === "↓") {
             btns[i].classList.add("dislikeButton");
           }
+          
         }
-
-
-
-        let up = document.getElementsByClassName("likeButton")
-        for (let i = 0; i < up.length; i++) {
-          up[i].addEventListener("click", function () {
-            console.log("hej")
-          })
-
-        }
-
-
 
 
         document.getElementById("oldPostsDiv").appendChild(divPost);
@@ -92,14 +88,7 @@ if (checkStorage == null) {
       }
     }
     );
-
-
-
 }
-
-
-
-
 
 // If local storage isn't empty, print out content
 else {
@@ -147,7 +136,18 @@ else {
         for (let i = 0; i < btns.length; i++) {
           if (btns[i].textContent === "↑") {
             btns[i].classList.add("likeButton");
-          }
+            btns[i].addEventListener("click", function(){
+
+              let up = btns[i].value;
+              console.log(up)
+              console.log('You clicked element index' + i);
+            }.bind(null, i));
+        
+        
+        
+        }
+
+
           if (btns[i].textContent === "↓") {
             btns[i].classList.add("dislikeButton");
           }
@@ -233,7 +233,13 @@ for (let i = 0; i < collapse.length; i++) {
     for (let i = 0; i < btns.length; i++) {
       if (btns[i].textContent === "↑") {
         btns[i].classList.add("likeButton");
-      }
+        btns[i].addEventListener("click", function(){
+              
+          for (let i = 0; i < btns[i].length; i++) {
+            console.log(btns[i]);
+          }
+      })
+    }
       if (btns[i].textContent === "↓") {
         btns[i].classList.add("dislikeButton");
       }
@@ -261,3 +267,31 @@ for (let i = 0; i < collapse.length; i++) {
 
   }
   postButton.addEventListener("click", onClick);
+
+
+  /*
+  let up = document.getElementsByClassName("likeButton");
+  for (var i = 0; i < items.length; i++) {
+    up[i].addEventListener("click", upVote);
+
+  }
+
+*/
+
+/*
+function upVote() {
+  let up = document.getElementsByTagName("h6");
+  for (let i = 0; i < up.length; i++) {
+  console.log(up[i].firstChild.data);
+} 
+}
+*/
+
+
+/*
+function upVote() {
+  let up = document.getElementsByTagName("h6");
+  for (let i = 0; i < up.length; i++) {
+  console.log(up[i].firstChild.data);
+} 
+}*/
