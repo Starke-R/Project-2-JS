@@ -1,385 +1,34 @@
 /* Responsive mindre storlek */
 @media only screen and (max-width: 500px) {
 
-body{
-    background-color: white;
-    font-family: verdana, arial, helvetica, sans-serif;
-    max-width: 500px;
-    margin:0;
-}
-
-.mainContainer{
-    background-color: white;
-    display: grid;
-    grid-template-rows: 2.5rem, auto;
-    grid-template-areas:
-        "top top top"
-        "main main main";
-    grid-template-columns: 100%;
-    
-    
-}
-
-#navLeft{
-    display: none;
-}
-
-#navRight{
-    display: none;
-}
-
-header{
-    background-color: white;
-    display: grid;
-    position: fixed;
-    width: 100%;
-    height: 3rem;
-    margin-top: none;
-    padding-top: none;
-    align-items: center;
-    justify-content: space-between;
-}
-
-#redditLogo{
-    margin-left: 50px;
-    margin-top: -35px;
-}
-
-#redditTextLogo{
-    visibility: hidden;
-    margin-left: 75px;
-    margin-top: -45px;
-}
-
-
-#menu {
-    margin-left: 10px;
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-#logInButton{
-    background-color:#FF4500;
-    border: none;
-    height: 40px;
-    width: 60px;
-    color: white;
-    font-weight: bold;
-    border-radius: 35px;
-    position: absolute;
-    top: 1,5%;
-    margin-left: 380px;
-    cursor: pointer;
-}
-
-main{
-    display: grid;
-    margin-top: 2.5rem;
-    grid-area: leftnav, main, rightnav;
-    margin-left: 0%;    
-}
-
-#welcomeText{       
-    padding-bottom: 10px;
-    border-bottom: 1px solid lightgrey;
-}
-
-#subRedditInfo{
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-    margin-right: 10px;
-    
-}
-
-#subRedditIcon{
-    border-radius: 35px;
-    
-}
-
-
-h4{
-    font-size: 1rem;
-    font-weight: bold;
-    margin-left: 5px;
-    
-}
-
-h5{
-    margin-top: -10px;
-    font-size: 0.6rem;
-    font-weight: lighter;
-    margin-left: 65px;
-}
-
-
-#joinButton{    
-    background-color:rgb(22, 22, 221);
-    border: none;
-    height: 30px;
-    width: 50px;
-    color: white;
-    border-radius: 35px;
-    position: absolute;
-    top: 1,5%;
-    margin-left: 375px;
-    cursor: pointer;
-}
-
-#subRedditWelcomeSmall{
-    font-size: 0.7rem;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-#subRedditWelcomeBig{
-    visibility: hidden;
-}
-
-
-#feedButton{
-    background-color:rgb(172, 171, 171);
-    border: none;
-    height: 40px;
-    width: 60px;
-    color: black;
-    font-weight: bold;
-    border-radius: 35px;
-    cursor: pointer;
-}
-
-#feedButton:hover{
-    background-color:rgb(192, 190, 190);
-}
-
-#aboutButton{
-    background-color:white;
-    border: none;
-    height: 40px;
-    width: 60px;
-    color: black;
-    font-weight: bold;
-    border-radius: 35px;
-    cursor: pointer;
-}
-
-#aboutButton:hover{
-    background-color:lightgray;
-}
-
-
-.createButton{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    background-color:white;
-    border: solid 1px;
-    height: 40px;
-    width: 120px;
-    color: black;
-    font-weight: bold;
-    border-radius: 35px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-#createButton:hover{
-    border: solid 2px;
-}
-
-.createPostField{
-    padding: 0 18px;
-    display: none;
-    overflow: hidden;
-    background-color: #f1f1f1;
-    padding-bottom: 10px;
-    border-radius: 10px;
-  }
-
-#inputTitle {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: 2px solid #ccc;
-    box-sizing: border-box;
-    }
-
-#inputTagOne {
-    width: 100px;
-    height: 25px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: 2px solid #ccc;
-    box-sizing: border-box;
-    }
-#inputTagTwo {
-    width: 100px;
-    height: 25px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: 2px solid #ccc;
-    box-sizing: border-box;
-    }
-#inputTagThree {
-    width: 100px;
-    height: 25px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: 2px solid #ccc;
-    box-sizing: border-box;
-    }
-
-#inputPost {
-    width: 100%;
-    height: 150px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: 2px solid #ccc;
-    box-sizing: border-box;
-    resize: none;
-    font-family: verdana, arial, helvetica, sans-serif;
-    font-size: 12px;
-    }
-
-#postButton{
-    background-color:rgb(172, 171, 171);
-    border: none;
-    height: 40px;
-    width: 60px;
-    color: black;
-    font-weight: bold;
-    border-radius: 35px;
-    cursor: pointer;
-    }
-
-
-
-/* CSS för JSON-importerade inlägg */
-
-.oldPosts{
-    margin-left: 10px;
-    margin-top: 20px;
-    font-size: 12px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid lightgrey;
-    float: left;
-    
-}
-
-.newPosts{
-    margin-left: 10px;
-    margin-top: 20px;
-    font-size: 12px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid lightgrey;
-    float: left;
-    }
-
-
-.tagStyling{
-    display: flex;
-    flex-direction: row;
-}
-
-
-h1{
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-
-h2{
-    font-size: 12px;
-    background-color:rgb(0, 151, 20);
-    border: none;
-    color: rgb(255, 255, 255);
-    font-weight: normal;
-    width: 70px;
-    border-radius: 35px;
-    float: left;
-    text-align: center;
-
-    margin-bottom: 5px;
-}
-
-h3{
-    font-size: 12px;
-    font-weight: normal;
-    
-    
-}
-
-h6{
-    font-size: 12px;
-    background-color:#f1f1f1;
-    border: none;
-    color: black;
-    font-weight: normal;
-    height: 30px;
-    width: 60px;
-    border-radius: 35px;
-    float: left;
-    text-align: center;
-    padding-top: 10px;
-    margin-bottom: 0%;
-    margin-top: 0%;
-}
-
-.likeButton{
-    background-color:#f1f1f1;
-    border: none;
-    height: 40px;
-    width: 60px;
-    color: black;
-    font-weight: bold;
-    border-radius: 35px;
-    cursor: pointer;
-    }
-
-.dislikeButton{
-    background-color:#f1f1f1;
-    border: none;
-    height: 40px;
-    width: 60px;
-    color: black;
-    font-weight: bold;
-    border-radius: 35px;
-    cursor: pointer;
-    }
-    
-
-
-}
-
-
-
-
-/* Responsive större storlek */
-@media only screen and (min-width: 500px) {
-
-    body{
+    body {
         background-color: white;
         font-family: verdana, arial, helvetica, sans-serif;
         max-width: 500px;
-        margin:0;
-        
+        margin: 0;
     }
-    
-    .mainContainer{
+
+    .mainContainer {
         background-color: white;
         display: grid;
-        grid-template-rows: 2;
+        grid-template-rows: 2.5rem, auto;
         grid-template-areas:
-            "top top top "
-            "leftnav main rightnav ";
-        grid-template-columns:  20% 70% 40%;
-        width: 1500px;
-        align-self: center;    
+            "top top top"
+            "main main main";
+        grid-template-columns: 100%;
+
+
     }
-    
-    
-    header{
+
+    #navLeft {
+        display: none;
+    }
+
+    #navRight {
+        display: none;
+    }
+
+    header {
         background-color: white;
         display: grid;
         position: fixed;
@@ -389,31 +38,28 @@ h6{
         padding-top: none;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 1px solid lightgrey;
-        
-    }
-    
-    #redditLogo{
-        margin-left: 30px;
-        margin-top: 5px;
     }
 
-    #redditTextLogo{
-        visibility: visible;
+    #redditLogo {
+        margin-left: 50px;
+        margin-top: -35px;
+    }
+
+    #redditTextLogo {
+        visibility: hidden;
         margin-left: 75px;
         margin-top: -45px;
     }
-    
+
+
     #menu {
-        display: none;
-    }
-    
-    #banner{
-        display: none;
+        margin-left: 10px;
+        margin-top: 10px;
+        cursor: pointer;
     }
 
-    #logInButton{
-        background-color:#FF4500;
+    #logInButton {
+        background-color: #FF4500;
         border: none;
         height: 40px;
         width: 60px;
@@ -421,123 +67,79 @@ h6{
         font-weight: bold;
         border-radius: 35px;
         position: absolute;
-        top: 1,5%;
-        justify-self: end;
-        margin-right: 50px;
+        top: 1, 5%;
+        margin-left: 380px;
         cursor: pointer;
     }
-    
-    main{
+
+    main {
         display: grid;
         margin-top: 2.5rem;
-        grid-area: main;
-        align-self: center;
-        margin-left: 100px;
-        margin-right: 100px;
-
+        grid-area: leftnav, main, rightnav;
+        margin-left: 0%;
     }
 
-    #navLeft{
-        display: grid;
-        grid-area: leftnav;
-        margin-top: 5rem;
-        width: 300px;
-        height: 500px;
-            
-        border-radius: 35px;  
-        margin-left: 50px;
-          
-    }
-    
-    .leftBlock{
-        padding-top: 20px;
-        border-bottom: 1px solid lightgrey;
-
-    }
-
-    #navRight{
-        display: grid;
-        grid-area: rightnav;
-        margin-top: 5rem;
-        width: 300px;
-        height: 500px;
-        background-color:  #f1f1f1;     
-        border-radius: 35px;  
-        margin-left: 5px;
-        margin-right: 5px;  
-
-    }
-
-    #bannerTwo{
-        margin-top: 25px;
-        
-    }
-    
-    
-    #welcomeText{       
+    #welcomeText {
         padding-bottom: 10px;
-        border-bottom: none;
-        
+        border-bottom: 1px solid lightgrey;
     }
-    
-    #subRedditInfo{
+
+    #subRedditInfo {
         margin-top: 10px;
         display: flex;
         align-items: center;
         margin-left: 10px;
         margin-right: 10px;
-        
+
     }
-    
-    #subRedditIcon{
+
+    #subRedditIcon {
         border-radius: 35px;
-        
+
     }
-    
-    
-    h4{
+
+
+    h4 {
         font-size: 1rem;
         font-weight: bold;
         margin-left: 5px;
-        
+
     }
-    
-    h5{
+
+    h5 {
         margin-top: -10px;
         font-size: 0.6rem;
         font-weight: lighter;
-        margin-left: 5px;
+        margin-left: 65px;
     }
-        
-    #joinButton{    
-        display: none;
+
+
+    #joinButton {
+        background-color: rgb(22, 22, 221);
+        border: none;
+        height: 30px;
+        width: 50px;
+        color: white;
+        border-radius: 35px;
+        position: absolute;
+        top: 1, 5%;
+        margin-left: 375px;
+        cursor: pointer;
     }
-    
-    #subRedditWelcomeSmall{
-        display: none;
-    }
-    
-    #subRedditWelcomeBig{
-        visibility: visible;
+
+    #subRedditWelcomeSmall {
         font-size: 0.7rem;
         margin-left: 10px;
         margin-right: 10px;
-        
     }
 
-    #joinButtonTwo{    
-        background-color:rgb(22, 22, 221);
-        border: none;
-        height: 40px;
-        width: 60px;
-        color: white;
-        font-weight: bold;
-        border-radius: 35px;
-        cursor: pointer;
+    #subRedditWelcomeBig {
+        visibility: hidden;
     }
 
-    #feedButton{
-        background-color:rgb(172, 171, 171);
+
+    #feedButton {
+        background-color: rgb(172, 171, 171);
         border: none;
         height: 40px;
         width: 60px;
@@ -546,13 +148,13 @@ h6{
         border-radius: 35px;
         cursor: pointer;
     }
-    
-    #feedButton:hover{
-        background-color:rgb(192, 190, 190);
+
+    #feedButton:hover {
+        background-color: rgb(192, 190, 190);
     }
-    
-    #aboutButton{
-        background-color:white;
+
+    #aboutButton {
+        background-color: white;
         border: none;
         height: 40px;
         width: 60px;
@@ -561,16 +163,16 @@ h6{
         border-radius: 35px;
         cursor: pointer;
     }
-    
-    #aboutButton:hover{
-        background-color:lightgray;
+
+    #aboutButton:hover {
+        background-color: lightgray;
     }
-    
-    
-    .createButton{
+
+
+    .createButton {
         margin-top: 15px;
         margin-bottom: 15px;
-        background-color:white;
+        background-color: white;
         border: solid 1px;
         height: 40px;
         width: 120px;
@@ -578,30 +180,30 @@ h6{
         font-weight: bold;
         border-radius: 35px;
         cursor: pointer;
-        margin-right: 10px;
+        margin-left: 10px;
     }
-    
-    #createButton:hover{
+
+    #createButton:hover {
         border: solid 2px;
     }
-    
-    .createPostField{
+
+    .createPostField {
         padding: 0 18px;
         display: none;
         overflow: hidden;
         background-color: #f1f1f1;
         padding-bottom: 10px;
         border-radius: 10px;
-      }
-    
+    }
+
     #inputTitle {
         width: 100%;
         padding: 12px 20px;
         margin: 8px 0;
         border: 2px solid #ccc;
         box-sizing: border-box;
-        }
-    
+    }
+
     #inputTagOne {
         width: 100px;
         height: 25px;
@@ -609,7 +211,8 @@ h6{
         margin: 8px 0;
         border: 2px solid #ccc;
         box-sizing: border-box;
-        }
+    }
+
     #inputTagTwo {
         width: 100px;
         height: 25px;
@@ -617,7 +220,8 @@ h6{
         margin: 8px 0;
         border: 2px solid #ccc;
         box-sizing: border-box;
-        }
+    }
+
     #inputTagThree {
         width: 100px;
         height: 25px;
@@ -625,8 +229,8 @@ h6{
         margin: 8px 0;
         border: 2px solid #ccc;
         box-sizing: border-box;
-        }
-    
+    }
+
     #inputPost {
         width: 100%;
         height: 150px;
@@ -637,10 +241,10 @@ h6{
         resize: none;
         font-family: verdana, arial, helvetica, sans-serif;
         font-size: 12px;
-        }
-    
-    #postButton{
-        background-color:rgb(172, 171, 171);
+    }
+
+    #postButton {
+        background-color: rgb(172, 171, 171);
         border: none;
         height: 40px;
         width: 60px;
@@ -648,47 +252,63 @@ h6{
         font-weight: bold;
         border-radius: 35px;
         cursor: pointer;
-        }
-    
-    
-    
+    }
+
+
+
     /* CSS för JSON-importerade inlägg */
-    
-    .oldPosts{
+
+    .oldPosts {
+        margin-left: 10px;
+        margin-top: 20px;
+        font-size: 12px;
+        padding-bottom: 15px;
+        float: left;
+    }
+
+    .oldVotePosts {
         margin-left: 10px;
         margin-top: 20px;
         font-size: 12px;
         padding-bottom: 15px;
         border-bottom: 1px solid lightgrey;
-        /*float: left;*/
-        
+        float: left;
     }
-    
-    .newPosts{
 
+    .newPosts {
+        margin-left: 10px;
+        margin-top: 20px;
+        font-size: 12px;
+        padding-bottom: 15px;
+        float: left;
+    }
+
+    .newVotePosts {
         margin-left: 10px;
         margin-top: 20px;
         font-size: 12px;
         padding-bottom: 15px;
         border-bottom: 1px solid lightgrey;
-        white-space: pre-wrap;
-        
-       /* float: left;*/
-    
+        float: left;
     }
 
 
+    .tagStyling {
+        display: flex;
+        flex-direction: row;
+    }
 
-    h1{
+
+    h1 {
         font-size: 1rem;
         font-weight: bold;
         margin-bottom: 5px;
     }
-    
-    
-    h2{
+
+
+    h2 {
         font-size: 12px;
-        background-color:rgb(0, 151, 20);
+        background-color: rgb(0, 151, 20);
         border: none;
         color: rgb(255, 255, 255);
         font-weight: normal;
@@ -696,20 +316,19 @@ h6{
         border-radius: 35px;
         float: left;
         text-align: center;
-
         margin-bottom: 5px;
     }
-   
-    h3{
+
+    h3 {
         font-size: 12px;
         font-weight: normal;
-        
-        
+
+
     }
 
-    h6{
+    h6 {
         font-size: 12px;
-        background-color:#f1f1f1;
+        background-color: #f1f1f1;
         border: none;
         color: black;
         font-weight: normal;
@@ -723,8 +342,8 @@ h6{
         margin-top: 0%;
     }
 
-    .likeButton{
-        background-color:#f1f1f1;
+    .likeButton {
+        background-color: #f1f1f1;
         border: none;
         height: 40px;
         width: 60px;
@@ -732,10 +351,10 @@ h6{
         font-weight: bold;
         border-radius: 35px;
         cursor: pointer;
-        }
+    }
 
-    .dislikeButton{
-        background-color:#f1f1f1;
+    .dislikeButton {
+        background-color: #f1f1f1;
         border: none;
         height: 40px;
         width: 60px;
@@ -743,6 +362,412 @@ h6{
         font-weight: bold;
         border-radius: 35px;
         cursor: pointer;
-        }
-        
+    }
+
+
+
+}
+
+
+
+
+/* Responsive större storlek */
+@media only screen and (min-width: 500px) {
+
+    body {
+        background-color: white;
+        font-family: verdana, arial, helvetica, sans-serif;
+        max-width: 500px;
+        margin: 0;
+
+    }
+
+    .mainContainer {
+        background-color: white;
+        display: grid;
+        grid-template-rows: 2;
+        grid-template-areas:
+            "top top top "
+            "leftnav main rightnav ";
+        grid-template-columns: 20% 70% 40%;
+        width: 1500px;
+        align-self: center;
+    }
+
+
+    header {
+        background-color: white;
+        display: grid;
+        position: fixed;
+        width: 100%;
+        height: 3rem;
+        margin-top: none;
+        padding-top: none;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid lightgrey;
+
+    }
+
+    #redditLogo {
+        margin-left: 30px;
+        margin-top: 5px;
+    }
+
+    #redditTextLogo {
+        visibility: visible;
+        margin-left: 75px;
+        margin-top: -45px;
+    }
+
+    #menu {
+        display: none;
+    }
+
+    #banner {
+        display: none;
+    }
+
+    #logInButton {
+        background-color: #FF4500;
+        border: none;
+        height: 40px;
+        width: 60px;
+        color: white;
+        font-weight: bold;
+        border-radius: 35px;
+        position: absolute;
+        top: 1, 5%;
+        justify-self: end;
+        margin-right: 50px;
+        cursor: pointer;
+    }
+
+    main {
+        display: grid;
+        margin-top: 2.5rem;
+        grid-area: main;
+        align-self: center;
+        margin-left: 100px;
+        margin-right: 100px;
+
+    }
+
+    #navLeft {
+        display: grid;
+        grid-area: leftnav;
+        margin-top: 5rem;
+        width: 300px;
+        height: 500px;
+
+        border-radius: 35px;
+        margin-left: 50px;
+
+    }
+
+    .leftBlock {
+        padding-top: 20px;
+        border-bottom: 1px solid lightgrey;
+
+    }
+
+    #navRight {
+        display: grid;
+        grid-area: rightnav;
+        margin-top: 5rem;
+        width: 300px;
+        height: 500px;
+        background-color: #f1f1f1;
+        border-radius: 35px;
+        margin-left: 5px;
+        margin-right: 5px;
+
+    }
+
+    #bannerTwo {
+        margin-top: 25px;
+
+    }
+
+
+    #welcomeText {
+        padding-bottom: 10px;
+        border-bottom: none;
+
+    }
+
+    #subRedditInfo {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        margin-right: 10px;
+
+    }
+
+    #subRedditIcon {
+        border-radius: 35px;
+
+    }
+
+
+    h4 {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-left: 5px;
+
+    }
+
+    h5 {
+        margin-top: -10px;
+        font-size: 0.6rem;
+        font-weight: lighter;
+        margin-left: 5px;
+    }
+
+    #joinButton {
+        display: none;
+    }
+
+    #subRedditWelcomeSmall {
+        display: none;
+    }
+
+    #subRedditWelcomeBig {
+        visibility: visible;
+        font-size: 0.7rem;
+        margin-left: 10px;
+        margin-right: 10px;
+
+    }
+
+    #joinButtonTwo {
+        background-color: rgb(22, 22, 221);
+        border: none;
+        height: 40px;
+        width: 60px;
+        color: white;
+        font-weight: bold;
+        border-radius: 35px;
+        cursor: pointer;
+    }
+
+    #feedButton {
+        background-color: rgb(172, 171, 171);
+        border: none;
+        height: 40px;
+        width: 60px;
+        color: black;
+        font-weight: bold;
+        border-radius: 35px;
+        cursor: pointer;
+    }
+
+    #feedButton:hover {
+        background-color: rgb(192, 190, 190);
+    }
+
+    #aboutButton {
+        background-color: white;
+        border: none;
+        height: 40px;
+        width: 60px;
+        color: black;
+        font-weight: bold;
+        border-radius: 35px;
+        cursor: pointer;
+    }
+
+    #aboutButton:hover {
+        background-color: lightgray;
+    }
+
+
+    .createButton {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        background-color: white;
+        border: solid 1px;
+        height: 40px;
+        width: 120px;
+        color: black;
+        font-weight: bold;
+        border-radius: 35px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    #createButton:hover {
+        border: solid 2px;
+    }
+
+    .createPostField {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+        padding-bottom: 10px;
+        border-radius: 10px;
+    }
+
+    #inputTitle {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border: 2px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    #inputTagOne {
+        width: 100px;
+        height: 25px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border: 2px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    #inputTagTwo {
+        width: 100px;
+        height: 25px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border: 2px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    #inputTagThree {
+        width: 100px;
+        height: 25px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border: 2px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    #inputPost {
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border: 2px solid #ccc;
+        box-sizing: border-box;
+        resize: none;
+        font-family: verdana, arial, helvetica, sans-serif;
+        font-size: 12px;
+    }
+
+    #postButton {
+        background-color: rgb(172, 171, 171);
+        border: none;
+        height: 40px;
+        width: 60px;
+        color: black;
+        font-weight: bold;
+        border-radius: 35px;
+        cursor: pointer;
+    }
+
+
+
+    /* CSS för JSON-importerade inlägg */
+
+    .oldPosts {
+        margin-left: 10px;
+        margin-top: 20px;
+        font-size: 12px;
+    }
+
+    .oldVotePosts {
+        margin-left: 10px;
+        margin-top: 20px;
+        font-size: 12px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid lightgrey;
+    }
+
+    .newPosts {
+        margin-left: 10px;
+        margin-top: 20px;
+        font-size: 12px;
+        white-space: pre-wrap;
+    }
+
+    .newVotePosts {
+        margin-left: 10px;
+        margin-top: 20px;
+        font-size: 12px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid lightgrey;
+        white-space: pre-wrap;
+    }
+
+
+
+    h1 {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+
+    h2 {
+        font-size: 12px;
+        background-color: rgb(0, 151, 20);
+        border: none;
+        color: rgb(255, 255, 255);
+        font-weight: normal;
+        width: 70px;
+        border-radius: 35px;
+        float: left;
+        text-align: center;
+
+        margin-bottom: 5px;
+    }
+
+    h3 {
+        font-size: 12px;
+        font-weight: normal;
+
+
+    }
+
+    h6 {
+        font-size: 12px;
+        background-color: #f1f1f1;
+        border: none;
+        color: black;
+        font-weight: normal;
+        height: 30px;
+        width: 60px;
+        border-radius: 35px;
+        float: left;
+        text-align: center;
+        padding-top: 10px;
+        margin-bottom: 0%;
+        margin-top: 0%;
+    }
+
+    .likeButton {
+        background-color: #f1f1f1;
+        border: none;
+        height: 40px;
+        width: 60px;
+        color: black;
+        font-weight: bold;
+        border-radius: 35px;
+        cursor: pointer;
+    }
+
+    .dislikeButton {
+        background-color: #f1f1f1;
+        border: none;
+        height: 40px;
+        width: 60px;
+        color: black;
+        font-weight: bold;
+        border-radius: 35px;
+        cursor: pointer;
+    }
+
 }

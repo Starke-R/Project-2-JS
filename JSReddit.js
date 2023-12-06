@@ -13,6 +13,7 @@ if (checkStorage == null) {
 
       for (let i = 0; i < post.posts.length; i++) {
         let divPost = document.createElement("div");
+        let votePost = document.createElement("div");
 
         // Printing title
         let postTitle = post.posts[i].title;
@@ -39,7 +40,7 @@ if (checkStorage == null) {
 
         // Printing number of likes
         let postLikes = post.posts[i].reactions;
-        divPost.innerHTML += "<h6>" + postLikes + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
+        votePost.innerHTML += "<h6>" + postLikes + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
 
 
 
@@ -63,7 +64,9 @@ if (checkStorage == null) {
 
 
         document.getElementById("oldPostsDiv").appendChild(divPost);
+        document.getElementById("oldPostsDiv").appendChild(votePost);
         divPost.classList.add("oldPosts");
+        votePost.classList.add("oldVotePosts");
 
 
         // Adding the fetched posts to local storage
@@ -110,6 +113,7 @@ else {
         let values = retrievedValues[i];
 
         let divPost = document.createElement("div");
+        let votePost = document.createElement("div");
 
         let postNewTitle = values[0];
         let postNewTagOne = values[1];
@@ -126,22 +130,35 @@ else {
         divPost.innerHTML += "<br>"
         divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
     
-        divPost.innerHTML += "<h6>" + postNewLikes + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
+        votePost.innerHTML += "<h6>" + postNewLikes + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
 
         // Adding class for styling in CSS
         divPost.classList.add("newPosts");
+        votePost.classList.add("newVotePosts");
 
         // Adding classes to the like button and dislike button
         let btns = document.getElementsByTagName("button")
         for (let i = 0; i < btns.length; i++) {
           if (btns[i].textContent === "↑") {
+
             btns[i].classList.add("likeButton");
             btns[i].addEventListener("click", function(){
 
-              let up = btns[i].value;
+
+              //let up = postNewLikes;
+
+              let up = btns[i];
+
+
+              
+              
+
               console.log(up)
-              console.log('You clicked element index' + i);
-            }.bind(null, i));
+
+              //document.getElementById("newPostsDiv").appendChild(votePost);
+              
+            })
+            
         
         
         
@@ -155,6 +172,7 @@ else {
 
 
         document.getElementById("newPostsDiv").appendChild(divPost);
+        document.getElementById("newPostsDiv").appendChild(votePost);
       }
     }
   }
@@ -183,6 +201,8 @@ for (let i = 0; i < collapse.length; i++) {
   function onClick() {
     event.preventDefault();
     let divPost = document.createElement("div");
+    let votePost = document.createElement("div");
+
     let postNewTitle = document.getElementById("inputTitle").value;
     let postNewTagOne = document.getElementById("inputTagOne").value;
     let postNewTagTwo = document.getElementById("inputTagTwo").value;
@@ -202,7 +222,8 @@ for (let i = 0; i < collapse.length; i++) {
       divPost.innerHTML += "<br>"
       divPost.innerHTML += "<br>"
       divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
-      divPost.innerHTML += "<h6>" + postNewLikes + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
+
+      votePost.innerHTML += "<h6>" + postNewLikes + "</h6>" + "<button>↑</button>" + "<button>↓</button>";
 
 
       let newTags = document.getElementsByTagName("h2");
@@ -212,13 +233,15 @@ for (let i = 0; i < collapse.length; i++) {
 
       // Adding class for styling in CSS
       divPost.classList.add("newPosts");
+      votePost.classList.add("newVotePosts");
 
       document.getElementById("newPostsDiv").appendChild(divPost);
+      document.getElementById("newPostsDiv").appendChild(votePost);
     }
 
     // Inserting new posts above the old ones
     let previousPosts = document.getElementById("newPostsDiv");
-    previousPosts.insertBefore(divPost, previousPosts.firstChild);
+    previousPosts.insertBefore(divPost, votePost, previousPosts.firstChild);
 
     // Clearing fields after getting the values
     document.getElementById("inputTitle").value = "";
