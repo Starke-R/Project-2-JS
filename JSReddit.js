@@ -51,25 +51,24 @@ if (checkStorage == null) {
         upVote.addEventListener("click", function () {
           postLikes++;
           votePost.innerHTML = "<h6>" + postLikes + "</h6>"
+          return postLikes;
         });
-
+        
         downVote.addEventListener("click", function () {
           postLikes--;
           votePost.innerHTML = "<h6>" + postLikes + "</h6>"
         });
 
         // Appending the divs with new information
-        document.getElementById("newPostsDiv").appendChild(divPost);
-        document.getElementById("newPostsDiv").appendChild(votePost);
-        document.getElementById("newPostsDiv").appendChild(upVote);
-        document.getElementById("newPostsDiv").appendChild(downVote);
+        document.getElementById("postsDiv").appendChild(divPost);
+        document.getElementById("postsDiv").appendChild(votePost);
+        document.getElementById("postsDiv").appendChild(upVote);
+        document.getElementById("postsDiv").appendChild(downVote);
 
         divPost.classList.add("oldPosts");
         votePost.classList.add("oldVotePosts");
         upVote.classList.add("likeButton");
         downVote.classList.add("dislikeButton");
-
-
 
         // Adding the fetched posts to local storage
         let checkStorage = localStorage.getItem("storingValues");
@@ -152,10 +151,10 @@ else {
         });
 
         // Appending the divs with new information
-        document.getElementById("newPostsDiv").appendChild(divPost);
-        document.getElementById("newPostsDiv").appendChild(votePost);
-        document.getElementById("newPostsDiv").appendChild(upVote);
-        document.getElementById("newPostsDiv").appendChild(downVote);
+        document.getElementById("postsDiv").appendChild(divPost);
+        document.getElementById("postsDiv").appendChild(votePost);
+        document.getElementById("postsDiv").appendChild(upVote);
+        document.getElementById("postsDiv").appendChild(downVote);
 
         divPost.classList.add("oldPosts");
         votePost.classList.add("oldVotePosts");
@@ -215,17 +214,32 @@ function onClick() {
 
     votePost.innerHTML += "<h6>" + postNewLikes + "</h6>";
 
+    upVote.innerHTML += "↑";
+    downVote.innerHTML += "↓";
 
+    // Upvoting and downvoting eventlisteners
+    upVote.addEventListener("click", function () {
+      postNewLikes++;
+      votePost.innerHTML = "<h6>" + postNewLikes + "</h6>"
+    });
+
+    downVote.addEventListener("click", function () {
+      postNewLikes--;
+      votePost.innerHTML = "<h6>" + postNewLikes + "</h6>"
+    });
+
+
+/*
     let newTags = document.getElementsByTagName("h2");
     for (let i = 0; i < newTags.length; i++) {
       newTags[i].classList.add("tags");
     }
-
+*/
     // Adding class for styling in CSS
-    document.getElementById("newPostsDiv").appendChild(divPost);
-    document.getElementById("newPostsDiv").appendChild(votePost);
-    document.getElementById("newPostsDiv").appendChild(upVote);
-    document.getElementById("newPostsDiv").appendChild(downVote);
+    document.getElementById("postsDiv").appendChild(divPost);
+    document.getElementById("postsDiv").appendChild(votePost);
+    document.getElementById("postsDiv").appendChild(upVote);
+    document.getElementById("postsDiv").appendChild(downVote);
 
     divPost.classList.add("oldPosts");
     votePost.classList.add("oldVotePosts");
@@ -234,8 +248,12 @@ function onClick() {
   }
 
   // Inserting new posts above the old ones
-  let previousPosts = document.getElementById("newPostsDiv");
-  previousPosts.insertBefore(divPost, votePost, previousPosts.firstChild);
+  let previousPosts = document.getElementById("postsDiv");
+  previousPosts.insertBefore(downVote, previousPosts.firstChild);
+  previousPosts.insertBefore(upVote, downVote);
+  previousPosts.insertBefore(votePost, upVote);
+  previousPosts.insertBefore(divPost, votePost);
+  
 
   // Clearing fields after getting the values
   document.getElementById("inputTitle").value = "";

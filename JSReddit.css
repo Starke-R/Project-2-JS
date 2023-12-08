@@ -292,13 +292,6 @@
         float: left;
     }
 
-
-    .tagStyling {
-        display: flex;
-        flex-direction: row;
-    }
-
-
     h1 {
         font-size: 1rem;
         font-weight: bold;
@@ -676,14 +669,14 @@
         margin-left: 10px;
         margin-top: 20px;
         font-size: 12px;
+        border-top: 1px solid lightgrey;
     }
 
     .oldVotePosts {
         margin-left: 10px;
         margin-top: 20px;
         font-size: 12px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid lightgrey;
+       
     }
 
     .newPosts {
@@ -691,18 +684,16 @@
         margin-top: 20px;
         font-size: 12px;
         white-space: pre-wrap;
+        border-top: 1px solid lightgrey;    
     }
 
     .newVotePosts {
         margin-left: 10px;
         margin-top: 20px;
         font-size: 12px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid lightgrey;
         white-space: pre-wrap;
+        
     }
-
-
 
     h1 {
         font-size: 1rem;
@@ -721,15 +712,12 @@
         border-radius: 35px;
         float: left;
         text-align: center;
-
         margin-bottom: 5px;
     }
 
     h3 {
         font-size: 12px;
         font-weight: normal;
-
-
     }
 
     h6 {
@@ -769,5 +757,7 @@
         border-radius: 35px;
         cursor: pointer;
     }
+
+
 
 }
