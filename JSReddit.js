@@ -51,9 +51,8 @@ if (checkStorage == null) {
         upVote.addEventListener("click", function () {
           postLikes++;
           votePost.innerHTML = "<h6>" + postLikes + "</h6>"
-          return postLikes;
         });
-        
+
         downVote.addEventListener("click", function () {
           postLikes--;
           votePost.innerHTML = "<h6>" + postLikes + "</h6>"
@@ -70,12 +69,13 @@ if (checkStorage == null) {
         upVote.classList.add("likeButton");
         downVote.classList.add("dislikeButton");
 
+
         // Adding the fetched posts to local storage
         let checkStorage = localStorage.getItem("storingValues");
 
         if (checkStorage != null) {
 
-          let storeValues = [postTitle, tagOne, tagTwo, tagThree, postBody, postLikes]
+          let storeValues = [postTitle, tagOne, tagTwo, tagThree, postBody]
 
           let storingPosts = JSON.parse(localStorage.getItem("storingValues"));
           storingPosts.push(storeValues);
@@ -84,11 +84,27 @@ if (checkStorage == null) {
 
         else {
 
-          let storeValues = [postTitle, tagOne, tagTwo, tagThree, postBody, postLikes]
+          let storeValues = [postTitle, tagOne, tagTwo, tagThree, postBody]
           let storingPosts = [storeValues];
           localStorage.setItem("storingValues", JSON.stringify(storingPosts));
         }
 
+
+
+
+        window.onbeforeunload = function () {
+
+          let reactions = document.getElementsByClassName("oldVotePosts");
+          let alreadyStoredLikes = [];
+          let storeLikes = [];
+
+          for (let i = 0; i < reactions.length; i++) {
+            storeLikes = [reactions[i].innerText];
+            alreadyStoredLikes.push(storeLikes);
+
+          }
+          localStorage.setItem("storingLikes", JSON.stringify(alreadyStoredLikes));
+        }
       }
     }
     );
@@ -97,71 +113,90 @@ if (checkStorage == null) {
 // If local storage isn't empty, print out content
 else {
 
-
   // When page is reloaded, new posts that are saved in local storage are reprinted
   window.onload = function () {
 
     // Check if local storage is empty, else print out content
     let checkStorage = localStorage.getItem("storingValues");
 
-
     if (checkStorage != null) {
 
       let retrievedValues = JSON.parse(localStorage.getItem("storingValues"));
+      let retrievedReactions = JSON.parse(localStorage.getItem("storingLikes"));
 
       for (let i = 0; i < retrievedValues.length; i++) {
 
-        let values = retrievedValues[i];
+        for (let i = 0; i < retrievedReactions.length; i++) {
 
-        let divPost = document.createElement("div");
-        let votePost = document.createElement("div");
-        let upVote = document.createElement("button");
-        let downVote = document.createElement("button");
+          let reactions = retrievedReactions[i];
+
+          let postNewLikes = reactions[0];
+
+          let values = retrievedValues[i];
+
+          let divPost = document.createElement("div");
+          let votePost = document.createElement("div");
+          let upVote = document.createElement("button");
+          let downVote = document.createElement("button");
+
+          let postNewTitle = values[0];
+          let postNewTagOne = values[1];
+          let postNewTagTwo = values[2];
+          let postNewTagThree = values[3];
+          let postNewPost = values[4];
 
 
-        let postNewTitle = values[0];
-        let postNewTagOne = values[1];
-        let postNewTagTwo = values[2];
-        let postNewTagThree = values[3];
-        let postNewPost = values[4];
-        let postNewLikes = values[5];
+          divPost.innerHTML += "<h1>" + postNewTitle + "</h1>";
+          divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
+          divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
+          divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
+          divPost.innerHTML += "<br>"
+          divPost.innerHTML += "<br>"
+          divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
 
-        divPost.innerHTML += "<h1>" + postNewTitle + "</h1>";
-        divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
-        divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
-        divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
-        divPost.innerHTML += "<br>"
-        divPost.innerHTML += "<br>"
-        divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
+          votePost.innerHTML += "<h6>" + postNewLikes + "</h6>";
 
-        votePost.innerHTML += "<h6>" + postNewLikes + "</h6>";
+          upVote.innerHTML += "↑";
+          downVote.innerHTML += "↓";
 
-        upVote.innerHTML += "↑";
-        downVote.innerHTML += "↓";
+          // Upvoting and downvoting eventlisteners
+          upVote.addEventListener("click", function () {
+            postNewLikes++;
+            votePost.innerHTML = "<h6>" + postNewLikes + "</h6>"
+          });
 
-        // Upvoting and downvoting eventlisteners
-        upVote.addEventListener("click", function () {
-          postNewLikes++;
-          votePost.innerHTML = "<h6>" + postNewLikes + "</h6>"
-        });
+          downVote.addEventListener("click", function () {
+            postNewLikes--;
+            votePost.innerHTML = "<h6>" + postNewLikes + "</h6>"
+          });
 
-        downVote.addEventListener("click", function () {
-          postNewLikes--;
-          votePost.innerHTML = "<h6>" + postNewLikes + "</h6>"
-        });
+          // Appending the divs with new information
+          document.getElementById("postsDiv").appendChild(divPost);
+          document.getElementById("postsDiv").appendChild(votePost);
+          document.getElementById("postsDiv").appendChild(upVote);
+          document.getElementById("postsDiv").appendChild(downVote);
 
-        // Appending the divs with new information
-        document.getElementById("postsDiv").appendChild(divPost);
-        document.getElementById("postsDiv").appendChild(votePost);
-        document.getElementById("postsDiv").appendChild(upVote);
-        document.getElementById("postsDiv").appendChild(downVote);
-
-        divPost.classList.add("oldPosts");
-        votePost.classList.add("oldVotePosts");
-        upVote.classList.add("likeButton");
-        downVote.classList.add("dislikeButton");
+          divPost.classList.add("oldPosts");
+          votePost.classList.add("oldVotePosts");
+          upVote.classList.add("likeButton");
+          downVote.classList.add("dislikeButton");
+        }
       }
     }
+  }
+
+  window.onbeforeunload = function () {
+
+    let reactions = document.getElementsByClassName("oldVotePosts");
+    let alreadyStoredLikes = [];
+    let storeLikes = [];
+
+    for (let i = 0; i < reactions.length; i++) {
+      storeLikes = [reactions[i].innerText];
+      alreadyStoredLikes.push(storeLikes);
+
+    }
+    localStorage.setItem("storingLikes", JSON.stringify(alreadyStoredLikes));
   }
 }
 
@@ -228,13 +263,6 @@ function onClick() {
       votePost.innerHTML = "<h6>" + postNewLikes + "</h6>"
     });
 
-
-/*
-    let newTags = document.getElementsByTagName("h2");
-    for (let i = 0; i < newTags.length; i++) {
-      newTags[i].classList.add("tags");
-    }
-*/
     // Adding class for styling in CSS
     document.getElementById("postsDiv").appendChild(divPost);
     document.getElementById("postsDiv").appendChild(votePost);
@@ -253,7 +281,7 @@ function onClick() {
   previousPosts.insertBefore(upVote, downVote);
   previousPosts.insertBefore(votePost, upVote);
   previousPosts.insertBefore(divPost, votePost);
-  
+
 
   // Clearing fields after getting the values
   document.getElementById("inputTitle").value = "";
@@ -268,7 +296,7 @@ function onClick() {
 
   if (checkStorage != null) {
 
-    let storeValues = [postNewTitle, postNewTagOne, postNewTagTwo, postNewTagThree, postNewPost, postNewLikes]
+    let storeValues = [postNewTitle, postNewTagOne, postNewTagTwo, postNewTagThree, postNewPost]
 
     let storingPosts = JSON.parse(localStorage.getItem("storingValues"));
     storingPosts.unshift(storeValues);
@@ -277,11 +305,24 @@ function onClick() {
 
   else {
 
-    let storeNewValues = [postNewTitle, postNewTagOne, postNewTagTwo, postNewTagThree, postNewPost, postNewLikes]
+    let storeNewValues = [postNewTitle, postNewTagOne, postNewTagTwo, postNewTagThree, postNewPost]
     let storingPosts = [storeNewValues];
     localStorage.setItem("storingValues", JSON.stringify(storingPosts));
   }
 
+  window.onbeforeunload = function () {
+
+    let reactions = document.getElementsByClassName("oldVotePosts");
+    let alreadyStoredLikes = [];
+    let storeLikes = [];
+
+    for (let i = 0; i < reactions.length; i++) {
+      storeLikes = [reactions[i].innerText];
+      alreadyStoredLikes.push(storeLikes);
+
+    }
+    localStorage.setItem("storingLikes", JSON.stringify(alreadyStoredLikes));
+  }
 }
 postButton.addEventListener("click", onClick);
 
