@@ -1,4 +1,4 @@
-/* Responsive mindre storlek */
+/* Responsive design for smaller screens */
 @media only screen and (max-width: 500px) {
 
     body {
@@ -16,8 +16,6 @@
             "top top top"
             "main main main";
         grid-template-columns: 100%;
-
-
     }
 
     #navLeft {
@@ -50,7 +48,6 @@
         margin-left: 75px;
         margin-top: -45px;
     }
-
 
     #menu {
         margin-left: 10px;
@@ -90,20 +87,16 @@
         align-items: center;
         margin-left: 10px;
         margin-right: 10px;
-
     }
 
     #subRedditIcon {
         border-radius: 35px;
-
     }
-
 
     h4 {
         font-size: 1rem;
         font-weight: bold;
         margin-left: 5px;
-
     }
 
     h5 {
@@ -113,7 +106,6 @@
         margin-left: 65px;
     }
 
-
     #joinButton {
         background-color: rgb(22, 22, 221);
         border: none;
@@ -121,9 +113,8 @@
         width: 50px;
         color: white;
         border-radius: 35px;
-        position: absolute;
         top: 1, 5%;
-        margin-left: 375px;
+        margin-left: 175px;
         cursor: pointer;
     }
 
@@ -136,7 +127,6 @@
     #subRedditWelcomeBig {
         visibility: hidden;
     }
-
 
     #feedButton {
         background-color: rgb(172, 171, 171);
@@ -167,7 +157,6 @@
     #aboutButton:hover {
         background-color: lightgray;
     }
-
 
     .createButton {
         margin-top: 15px;
@@ -254,42 +243,34 @@
         cursor: pointer;
     }
 
-
-
-    /* CSS för JSON-importerade inlägg */
+    /* CSS for posts */
 
     .oldPosts {
         margin-left: 10px;
         margin-top: 20px;
         font-size: 12px;
-        padding-bottom: 15px;
-        float: left;
+        border-top: 1px solid lightgrey;
     }
 
     .oldVotePosts {
         margin-left: 10px;
         margin-top: 20px;
         font-size: 12px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid lightgrey;
-        float: left;
     }
 
     .newPosts {
         margin-left: 10px;
         margin-top: 20px;
         font-size: 12px;
-        padding-bottom: 15px;
-        float: left;
+        white-space: pre-wrap;
+        border-top: 1px solid lightgrey;
     }
 
     .newVotePosts {
         margin-left: 10px;
         margin-top: 20px;
         font-size: 12px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid lightgrey;
-        float: left;
+        white-space: pre-wrap;
     }
 
     h1 {
@@ -315,8 +296,6 @@
     h3 {
         font-size: 12px;
         font-weight: normal;
-
-
     }
 
     h6 {
@@ -356,15 +335,10 @@
         border-radius: 35px;
         cursor: pointer;
     }
-
-
-
 }
 
+/* Responsive design for bigger screens */
 
-
-
-/* Responsive större storlek */
 @media only screen and (min-width: 500px) {
 
     body {
@@ -372,7 +346,6 @@
         font-family: verdana, arial, helvetica, sans-serif;
         max-width: 500px;
         margin: 0;
-
     }
 
     .mainContainer {
@@ -399,7 +372,6 @@
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid lightgrey;
-
     }
 
     #redditLogo {
@@ -443,7 +415,6 @@
         align-self: center;
         margin-left: 100px;
         margin-right: 100px;
-
     }
 
     #navLeft {
@@ -452,16 +423,13 @@
         margin-top: 5rem;
         width: 300px;
         height: 500px;
-
         border-radius: 35px;
         margin-left: 50px;
-
     }
 
     .leftBlock {
         padding-top: 20px;
         border-bottom: 1px solid lightgrey;
-
     }
 
     #navRight {
@@ -474,19 +442,16 @@
         border-radius: 35px;
         margin-left: 5px;
         margin-right: 5px;
-
     }
 
     #bannerTwo {
         margin-top: 25px;
-
     }
 
 
     #welcomeText {
         padding-bottom: 10px;
         border-bottom: none;
-
     }
 
     #subRedditInfo {
@@ -495,12 +460,10 @@
         align-items: center;
         margin-left: 10px;
         margin-right: 10px;
-
     }
 
     #subRedditIcon {
         border-radius: 35px;
-
     }
 
 
@@ -508,7 +471,6 @@
         font-size: 1rem;
         font-weight: bold;
         margin-left: 5px;
-
     }
 
     h5 {
@@ -531,7 +493,6 @@
         font-size: 0.7rem;
         margin-left: 10px;
         margin-right: 10px;
-
     }
 
     #joinButtonTwo {
@@ -661,9 +622,7 @@
         cursor: pointer;
     }
 
-
-
-    /* CSS för JSON-importerade inlägg */
+    /* CSS for posts */
 
     .oldPosts {
         margin-left: 10px;
@@ -676,7 +635,6 @@
         margin-left: 10px;
         margin-top: 20px;
         font-size: 12px;
-       
     }
 
     .newPosts {
@@ -684,7 +642,7 @@
         margin-top: 20px;
         font-size: 12px;
         white-space: pre-wrap;
-        border-top: 1px solid lightgrey;    
+        border-top: 1px solid lightgrey;
     }
 
     .newVotePosts {
@@ -692,7 +650,6 @@
         margin-top: 20px;
         font-size: 12px;
         white-space: pre-wrap;
-        
     }
 
     h1 {
@@ -757,7 +714,4 @@
         border-radius: 35px;
         cursor: pointer;
     }
-
-
-
 }

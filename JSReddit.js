@@ -3,7 +3,6 @@ let checkStorage = localStorage.getItem("storingValues");
 
 if (checkStorage == null) {
 
-
   // Fetching posts from API
   fetch("https://dummyjson.com/posts/")
     .then(res => res.json())
@@ -69,8 +68,7 @@ if (checkStorage == null) {
         upVote.classList.add("likeButton");
         downVote.classList.add("dislikeButton");
 
-
-        // Adding the fetched posts to local storage
+        // Adding the fetched posts to local storage (except for likes)
         let checkStorage = localStorage.getItem("storingValues");
 
         if (checkStorage != null) {
@@ -89,9 +87,7 @@ if (checkStorage == null) {
           localStorage.setItem("storingValues", JSON.stringify(storingPosts));
         }
 
-
-
-
+        // When the page is reloaded, the likes are saved to local storage
         window.onbeforeunload = function () {
 
           let reactions = document.getElementsByClassName("oldVotePosts");
@@ -147,9 +143,17 @@ else {
 
 
           divPost.innerHTML += "<h1>" + postNewTitle + "</h1>";
-          divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
-          divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
-          divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
+
+          if (postNewTagOne) {
+            divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
+          }
+          if (postNewTagTwo) {
+            divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
+          }
+          if (postNewTagThree) {
+            divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
+          }
+
           divPost.innerHTML += "<br>"
           divPost.innerHTML += "<br>"
           divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
@@ -185,6 +189,7 @@ else {
     }
   }
 
+  // When the page is reloaded, the likes are saved to local storage
   window.onbeforeunload = function () {
 
     let reactions = document.getElementsByClassName("oldVotePosts");
@@ -200,8 +205,6 @@ else {
   }
 }
 
-
-
 // Open collapsing section to create posts
 let collapse = document.getElementsByClassName("createButton");
 
@@ -216,8 +219,6 @@ for (let i = 0; i < collapse.length; i++) {
     }
   });
 }
-
-
 
 // Function for getting input from the "create post"-fields and posting on the page after clicking on "post"-button
 function onClick() {
@@ -240,9 +241,17 @@ function onClick() {
   }
   else {
     divPost.innerHTML += "<h1>" + postNewTitle + "</h1>";
-    divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
-    divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
-    divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
+
+    if (postNewTagOne) {
+      divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
+    }
+    if (postNewTagTwo) {
+      divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
+    }
+    if (postNewTagThree) {
+      divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
+    }
+
     divPost.innerHTML += "<br>"
     divPost.innerHTML += "<br>"
     divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
@@ -310,6 +319,7 @@ function onClick() {
     localStorage.setItem("storingValues", JSON.stringify(storingPosts));
   }
 
+  // When the page is reloaded, the likes are saved to local storage
   window.onbeforeunload = function () {
 
     let reactions = document.getElementsByClassName("oldVotePosts");
