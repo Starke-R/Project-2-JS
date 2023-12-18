@@ -334,6 +334,7 @@
         font-weight: bold;
         border-radius: 35px;
         cursor: pointer;
+        margin-bottom: 15px;
     }
 }
 
@@ -355,11 +356,10 @@
         grid-template-areas:
             "top top top "
             "leftnav main rightnav ";
-        grid-template-columns: 20% 70% 40%;
-        width: 1500px;
+        grid-template-columns: 20% 70% 25%;
+        min-width: 1500px;
         align-self: center;
     }
-
 
     header {
         background-color: white;
@@ -466,7 +466,6 @@
         border-radius: 35px;
     }
 
-
     h4 {
         font-size: 1rem;
         font-weight: bold;
@@ -535,7 +534,6 @@
     #aboutButton:hover {
         background-color: lightgray;
     }
-
 
     .createButton {
         margin-top: 15px;
@@ -658,7 +656,6 @@
         margin-bottom: 5px;
     }
 
-
     h2 {
         font-size: 12px;
         background-color: rgb(0, 151, 20);
@@ -713,5 +710,6 @@
         font-weight: bold;
         border-radius: 35px;
         cursor: pointer;
+        margin-bottom: 15px;
     }
 }

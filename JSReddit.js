@@ -68,7 +68,7 @@ if (checkStorage == null) {
         upVote.classList.add("likeButton");
         downVote.classList.add("dislikeButton");
 
-        // Adding the fetched posts to local storage (except for likes)
+        // Adding the fetched posts to local storage (except for likes, see below*)
         let checkStorage = localStorage.getItem("storingValues");
 
         if (checkStorage != null) {
@@ -87,7 +87,7 @@ if (checkStorage == null) {
           localStorage.setItem("storingValues", JSON.stringify(storingPosts));
         }
 
-        // When the page is reloaded, the likes are saved to local storage
+        // *When the page is reloaded, the likes are saved to local storage
         window.onbeforeunload = function () {
 
           let reactions = document.getElementsByClassName("oldVotePosts");
@@ -106,107 +106,100 @@ if (checkStorage == null) {
     );
 }
 
-// If local storage isn't empty, print out content
+// If local storage ISN'T empty, print out the content
 else {
 
   // When page is reloaded, new posts that are saved in local storage are reprinted
   window.onload = function () {
 
-    // Check if local storage is empty, else print out content
-    let checkStorage = localStorage.getItem("storingValues");
+    let retrievedValues = JSON.parse(localStorage.getItem("storingValues"));
+    let retrievedReactions = JSON.parse(localStorage.getItem("storingLikes"));
 
-    if (checkStorage != null) {
+    for (let i = 0; i < retrievedReactions.length; i++) {
 
-      let retrievedValues = JSON.parse(localStorage.getItem("storingValues"));
-      let retrievedReactions = JSON.parse(localStorage.getItem("storingLikes"));
+      let reactions = retrievedReactions[i];
 
-      for (let i = 0; i < retrievedValues.length; i++) {
+      let postNewLikes = reactions[0];
 
-        for (let i = 0; i < retrievedReactions.length; i++) {
+      let values = retrievedValues[i];
 
-          let reactions = retrievedReactions[i];
+      let divPost = document.createElement("div");
+      let votePost = document.createElement("div");
+      let upVote = document.createElement("button");
+      let downVote = document.createElement("button");
 
-          let postNewLikes = reactions[0];
-
-          let values = retrievedValues[i];
-
-          let divPost = document.createElement("div");
-          let votePost = document.createElement("div");
-          let upVote = document.createElement("button");
-          let downVote = document.createElement("button");
-
-          let postNewTitle = values[0];
-          let postNewTagOne = values[1];
-          let postNewTagTwo = values[2];
-          let postNewTagThree = values[3];
-          let postNewPost = values[4];
+      let postNewTitle = values[0];
+      let postNewTagOne = values[1];
+      let postNewTagTwo = values[2];
+      let postNewTagThree = values[3];
+      let postNewPost = values[4];
 
 
-          divPost.innerHTML += "<h1>" + postNewTitle + "</h1>";
+      divPost.innerHTML += "<h1>" + postNewTitle + "</h1>";
 
-          if (postNewTagOne) {
-            divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
-          }
-          if (postNewTagTwo) {
-            divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
-          }
-          if (postNewTagThree) {
-            divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
-          }
-
-          divPost.innerHTML += "<br>"
-          divPost.innerHTML += "<br>"
-          divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
-
-          votePost.innerHTML += "<h6>" + postNewLikes + "</h6>";
-
-          upVote.innerHTML += "↑";
-          downVote.innerHTML += "↓";
-
-          // Upvoting and downvoting eventlisteners
-          upVote.addEventListener("click", function () {
-            postNewLikes++;
-            votePost.innerHTML = "<h6>" + postNewLikes + "</h6>"
-          });
-
-          downVote.addEventListener("click", function () {
-            postNewLikes--;
-            votePost.innerHTML = "<h6>" + postNewLikes + "</h6>"
-          });
-
-          // Appending the divs with new information
-          document.getElementById("postsDiv").appendChild(divPost);
-          document.getElementById("postsDiv").appendChild(votePost);
-          document.getElementById("postsDiv").appendChild(upVote);
-          document.getElementById("postsDiv").appendChild(downVote);
-
-          divPost.classList.add("oldPosts");
-          votePost.classList.add("oldVotePosts");
-          upVote.classList.add("likeButton");
-          downVote.classList.add("dislikeButton");
-        }
+      if (postNewTagOne) {
+        divPost.innerHTML += "<h2>" + postNewTagOne + "</h2>";
       }
+      if (postNewTagTwo) {
+        divPost.innerHTML += "<h2>" + postNewTagTwo + "</h2>";
+      }
+      if (postNewTagThree) {
+        divPost.innerHTML += "<h2>" + postNewTagThree + "</h2>";
+      }
+
+      divPost.innerHTML += "<br>"
+      divPost.innerHTML += "<br>"
+      divPost.innerHTML += "<h3>" + postNewPost + "</h3>";
+
+      votePost.innerHTML += "<h6>" + postNewLikes + "</h6>";
+
+      upVote.innerHTML += "↑";
+      downVote.innerHTML += "↓";
+
+      // Upvoting and downvoting eventlisteners
+      upVote.addEventListener("click", function () {
+        postNewLikes++;
+        votePost.innerHTML = "<h6>" + postNewLikes + "</h6>"
+      });
+
+      downVote.addEventListener("click", function () {
+        postNewLikes--;
+        votePost.innerHTML = "<h6>" + postNewLikes + "</h6>"
+      });
+
+      // Appending the divs with new information
+      document.getElementById("postsDiv").appendChild(divPost);
+      document.getElementById("postsDiv").appendChild(votePost);
+      document.getElementById("postsDiv").appendChild(upVote);
+      document.getElementById("postsDiv").appendChild(downVote);
+
+      divPost.classList.add("oldPosts");
+      votePost.classList.add("oldVotePosts");
+      upVote.classList.add("likeButton");
+      downVote.classList.add("dislikeButton");
+
     }
-  }
-
-  // When the page is reloaded, the likes are saved to local storage
-  window.onbeforeunload = function () {
-
-    let reactions = document.getElementsByClassName("oldVotePosts");
-    let alreadyStoredLikes = [];
-    let storeLikes = [];
-
-    for (let i = 0; i < reactions.length; i++) {
-      storeLikes = [reactions[i].innerText];
-      alreadyStoredLikes.push(storeLikes);
-
-    }
-    localStorage.setItem("storingLikes", JSON.stringify(alreadyStoredLikes));
   }
 }
 
-// Open collapsing section to create posts
+// When the page is reloaded, the likes are saved separetely to local storage
+window.onbeforeunload = function () {
+
+  let reactions = document.getElementsByClassName("oldVotePosts");
+  let alreadyStoredLikes = [];
+  let storeLikes = [];
+
+  for (let i = 0; i < reactions.length; i++) {
+    storeLikes = [reactions[i].innerText];
+    alreadyStoredLikes.push(storeLikes);
+
+  }
+  localStorage.setItem("storingLikes", JSON.stringify(alreadyStoredLikes));
+}
+
+// Open collapsing a section to create posts
 let collapse = document.getElementsByClassName("createButton");
+let openClose = document.getElementById("createOpenClose");
 
 for (let i = 0; i < collapse.length; i++) {
   collapse[i].addEventListener("click", function () {
@@ -214,8 +207,10 @@ for (let i = 0; i < collapse.length; i++) {
     let createPostField = this.nextElementSibling;
     if (createPostField.style.display === "block") {
       createPostField.style.display = "none";
+      openClose.innerHTML = "Create post";
     } else {
       createPostField.style.display = "block";
+      openClose.innerHTML = "Close";
     }
   });
 }
@@ -238,6 +233,7 @@ function onClick() {
   // If title and post input fields are empty, nothing is posted.
   if (inputTitle.value == "" || inputPost.value == "") {
     alert("Title and post cannot be empty");
+    return;
   }
   else {
     divPost.innerHTML += "<h1>" + postNewTitle + "</h1>";
@@ -319,7 +315,7 @@ function onClick() {
     localStorage.setItem("storingValues", JSON.stringify(storingPosts));
   }
 
-  // When the page is reloaded, the likes are saved to local storage
+  // When the page is reloaded, the likes are saved separetely to local storage
   window.onbeforeunload = function () {
 
     let reactions = document.getElementsByClassName("oldVotePosts");
